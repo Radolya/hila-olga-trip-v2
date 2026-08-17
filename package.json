@@ -1,7 +1,7 @@
 {
-  "name": "hila-olga-trip-v2",
+  "name": "hila-olga-trip-v4-supabase",
   "private": true,
-  "version": "2.0.0",
+  "version": "4.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
