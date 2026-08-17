@@ -119,7 +119,7 @@ textarea{min-height:105px;resize:vertical}
 <div class="app">
   <div class="top">
     <div><div class="brand">Our shared trip</div><div class="tripname">Hila + Olga · 9–26 Sep 2026</div></div>
-    <button class="iconbtn" id="jumpToday" title="Go to Sep 18">✦</button>
+    <button class="iconbtn" id="jumpToday" title="Go to actual trip day">✦</button>
   </div>
 
   <main>
@@ -143,10 +143,18 @@ textarea{min-height:105px;resize:vertical}
         </div>
         <div class="note">LOW = show famous places only when they are genuinely worth the detour.</div>
       </div>
+      <div class="card">
+        <h2>Choose region</h2>
+        <select id="regionSelect">
+          <option>Lisbon</option><option>Ericeira</option><option>Valencia</option>
+          <option>Chelva / Chulilla</option><option>Albarracín / Beceite</option>
+          <option>Priorat / Montsant</option><option selected>Costa Brava</option><option>Barcelona</option>
+        </select>
+      </div>
       <div class="filterbar">
-        <button class="filter">💎 Hidden Gems</button><button class="filter">🌊 Wild Beaches</button>
-        <button class="filter">🎨 Art</button><button class="filter">🧘 Yoga & Sound</button>
-        <button class="filter">🎶 Tonight</button><button class="filter">🍜 Food</button>
+        <button class="filter">💎 Hidden</button><button class="filter">🌊 Beach</button>
+        <button class="filter">🥾 Hike</button><button class="filter">🎨 Art</button>
+        <button class="filter">🧘 Wellness</button><button class="filter">🎶 Tonight</button><button class="filter">🍜 Food</button>
       </div>
       <div id="exploreCards"></div>
     </section>
@@ -189,6 +197,11 @@ textarea{min-height:105px;resize:vertical}
         <textarea id="sharedNotes" placeholder="Ideas, shopping, reminders…"></textarea>
         <button class="primary" id="saveNotes">Save on this device</button>
         <div class="note">This V1 saves notes and expenses locally on the current phone. Supabase is the next step for true shared syncing between both phones.</div>
+      </div>
+      <div class="card">
+        <h2>Master packing checklist</h2>
+        <div class="sub">Built around cities + Atlantic coast + wild beaches + hikes + mountain driving + work days.</div>
+        <div id="packingList" style="margin-top:10px"></div>
       </div>
       <div class="card">
         <h2>Quick access</h2>
@@ -254,15 +267,22 @@ const specialIdeas = {
 };
 
 const exploreSeed = [
- {name:'Wild beaches',desc:'Beautiful coves, fewer people, realistic parking and walking info.',tags:['COSTA BRAVA','NATURE'],emoji:'🌊'},
- {name:'Art & alternative',desc:'Contemporary art, graffiti, independent spaces, markets and unusual venues.',tags:['LISBON','VALENCIA','BARCELONA'],emoji:'🎨'},
- {name:'Yoga & sound',desc:'Drop-in yoga, sound healing, ecstatic dance and body-based events around your real dates.',tags:['ERICEIRA','LISBON'],emoji:'🧘'},
- {name:'Tonight',desc:'Local bars, jazz, rock, electronic, salsa, underground and non-touristy flamenco.',tags:['MUSIC','DANCE'],emoji:'🎶'},
- {name:'Food',desc:'Asian, local food, street food, vegan options, salads, greens and simple road food.',tags:['FOOD PROFILE'],emoji:'🍜'},
- {name:'Hidden gems',desc:'Ruins, viewpoints, swimming spots, tiny villages, wineries and strange beautiful places.',tags:['LOW TOURISM'],emoji:'💎'}
+ {region:'Lisbon',name:'Alternative Lisbon',desc:'Use this bucket for independent art, markets, graffiti, food and nightlife rather than a tourist checklist.',tags:['🎨 ART','🍜 FOOD','🎶 NIGHT'],emoji:'🎨'},
+ {region:'Ericeira',name:'Slow Flow · Sep 15',desc:'A currently listed Ericeira Slow Flow class on Sep 15 at 19:00. Good post-beach option; re-check shortly before the trip.',tags:['🧘 WELLNESS','DATE-SPECIFIC'],emoji:'🧘'},
+ {region:'Chelva / Chulilla',name:'Chelva Water Route',desc:'Official Chelva tourism highlights a gentle route along the river, springs and fountains. Better as a short flexible stop than a long hike on the Chulilla day.',tags:['🥾 WALK','✓ ON ROUTE'],emoji:'💧'},
+ {region:'Chelva / Chulilla',name:'Chulilla canyon',desc:'Hanging bridges and canyon scenery. Keep the chosen version short enough to protect check-in and evening energy.',tags:['🥾 HIKE','✓ ON ROUTE'],emoji:'🥾'},
+ {region:'Albarracín / Beceite',name:'El Parrizal',desc:'One of your saved nature stops in the Beceite area. Keep parking/access instructions visible on the day card.',tags:['🥾 NATURE','SAVED'],emoji:'🌿'},
+ {region:'Priorat / Montsant',name:'Wine + olive landscape',desc:'Priorat tourism explicitly supports winery visits, tastings and walking routes through vineyards and olive groves. Great flexible Plan B if hiking weather is poor.',tags:['🍷 WINE','🌧 PLAN B'],emoji:'🍷'},
+ {region:'Priorat / Montsant',name:'Siurana + Montsant',desc:'Clifftop village, viewpoints and nearby hiking. Pair with a shorter nature stop instead of stacking multiple long activities.',tags:['🏘 VIEW','🥾 HIKE'],emoji:'⛰️'},
+ {region:'Costa Brava',name:'Cala Pedrosa',desc:'Small, unspoilt pebble cove south of Tamariu, reached by coastal path/sea or by parking above and walking down. Short, wild and very on-profile.',tags:['🌊 WILD BEACH','🥾 ACCESS'],emoji:'🌊'},
+ {region:'Costa Brava',name:'Aigua Xelida',desc:'Small rocky cove close to Tamariu; good candidate for clear-water swimming/snorkeling without turning the day into a huge excursion.',tags:['🌊 COVE','💎 HIDDEN-ISH'],emoji:'🤿'},
+ {region:'Barcelona',name:'Alternative Barcelona',desc:'Prioritize contemporary art, vintage, local flamenco and date-specific music/events. Exact Sep 24–25 listings should be refreshed closer to the trip.',tags:['🎨 ART','💃 DANCE','🎶 TONIGHT'],emoji:'🎶'}
 ];
 
-let currentDate='2026-09-18';
+const tripStart='2026-09-09', tripEnd='2026-09-26';
+const isoToday=()=>{const n=new Date(); return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}`};
+const realToday=isoToday();
+let currentDate=(realToday>=tripStart && realToday<=tripEnd)?realToday:'2026-09-18';
 let subtab='route';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
@@ -298,8 +318,10 @@ function renderToday(){
  const image=d.image||'';
  const badges=(d.badges||[]).map(x=>`<span class="badge ${x.includes('Work')?'work':''}">${esc(x)}</span>`).join('');
  const hero=`<section class="hero ${image?'hasimg':''}">${image?`<img src="${image}" alt="${esc(d.city)}">`:''}<div class="hero-content"><div class="kicker">${d.dow} · ${dateLabel(d).day} ${dateLabel(d).mon}</div><h1>${esc(d.title)}</h1><p>${esc(d.city)}${d.stay?` · Tonight: ${esc(d.stay)}`:''}</p><div class="badges">${badges}</div></div></section>`;
+ const weather=`<div class="card"><h2>Weather</h2><div class="big">Live forecast</div><div class="sub">Automatic live weather is prepared as a feature but needs a weather data source/API before it can display real conditions. Until then, the app will not invent a forecast.</div><div class="note">When connected: temperature · rain · wind · sunset + practical warnings such as “Windy — take a light jacket.”</div></div>`;
  const tabs=`<div class="tabs"><button class="tab ${subtab==='route'?'active':''}" data-sub="route">Route</button><button class="tab ${subtab==='budget'?'active':''}" data-sub="budget">Budget</button><button class="tab ${subtab==='stay'?'active':''}" data-sub="stay">Stay</button><button class="tab ${subtab==='ideas'?'active':''}" data-sub="ideas">Ideas</button></div>`;
- $('#todayContent').innerHTML=hero+tabs+`<div id="subcontent"></div>`;
+ const nowCard=`<div class="card"><h2>What should we do now?</h2><div class="sub">Uses the current time as a guardrail: no long hike late in the day. Weather-aware recommendations will switch on when the live weather service is connected.</div><div class="actions"><button class="action" onclick="smartNow()">Give us 3 options</button><button class="action soft" onclick="setSub('ideas')">Browse ideas</button></div></div>`;
+ $('#todayContent').innerHTML=hero+weather+tabs+nowCard+`<div id="subcontent"></div>`;
  $$('.tab').forEach(b=>b.onclick=()=>{subtab=b.dataset.sub;renderToday();});
  renderSub(d);
 }
@@ -344,6 +366,14 @@ function renderSub(d){
    bindSave();
  }
 }
+window.smartNow=()=>{
+ const d=days.find(x=>x.date===currentDate), h=new Date().getHours();
+ let opts=h<11?['☕ Coffee + easy start','🥾 Short nature option','🎨 Local / art stop']:
+          h<16?['🌊 Nature / beach','🍜 Lunch + wander','💎 Hidden gem on route']:
+          h<19?['🌅 Sunset-oriented stop','🍷 Early dinner / wine','💎 Short hidden gem']:
+                 ['🍷 Dinner','🎶 Date-specific event','🌙 Easy local walk'];
+ alert(`${d.city}\n\n${opts.join('\n')}\n\nLong hikes are suppressed late in the day.`);
+}
 window.setSub=s=>{subtab=s;renderToday()}
 window.goExplore=()=>switchView('exploreView');
 
@@ -361,17 +391,23 @@ function renderTrip(){
  $$('[data-tripdate]').forEach(x=>x.onclick=()=>{currentDate=x.dataset.tripdate;subtab='route';renderDateStrip();renderToday();switchView('todayView')})
 }
 function renderExplore(){
- $('#exploreCards').innerHTML=exploreSeed.map((p,i)=>`<div class="card"><div style="font-size:40px;margin-bottom:9px">${p.emoji}</div><div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div><h2>${p.name}</h2><div class="sub">${p.desc}</div><div class="actions"><a class="action" target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.name+' Portugal Spain')}">Search Maps</a><button class="action soft">Curated list next</button></div></div>`).join('');
+ const region=$('#regionSelect')?.value||'Costa Brava';
+ const list=exploreSeed.filter(p=>p.region===region);
+ $('#exploreCards').innerHTML=list.map((p,i)=>`<div class="card"><div style="font-size:40px;margin-bottom:9px">${p.emoji}</div><div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div><h2>${p.name}</h2><div class="sub">${p.desc}</div><div class="actions"><a class="action" target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.name+' '+region)}">Google Maps</a><button class="action soft" onclick="votePlace('${encodeURIComponent(p.name)}')">Must / Maybe / Skip</button></div></div>`).join('')||'<div class="card"><div class="empty">More curated suggestions coming for this region.</div></div>';
 }
+window.votePlace=(n)=>{const name=decodeURIComponent(n);const v=prompt(`${name}\nType: MUST, MAYBE or SKIP`,'MAYBE');if(!v)return;localStorage.setItem('vote:'+name,v.toUpperCase());alert(`Saved: ${v.toUpperCase()}`)}
+
 function switchView(id){
  $$('.view').forEach(v=>v.classList.toggle('active',v.id===id)); $$('.navbtn').forEach(n=>n.classList.toggle('active',n.dataset.view===id)); window.scrollTo({top:0,behavior:'smooth'});
 }
 $$('.navbtn').forEach(b=>b.onclick=()=>switchView(b.dataset.view));
-$('#jumpToday').onclick=()=>{currentDate='2026-09-18';subtab='route';renderDateStrip();renderToday();switchView('todayView')};
+$('#jumpToday').onclick=()=>{currentDate=(realToday>=tripStart&&realToday<=tripEnd)?realToday:'2026-09-18';subtab='route';renderDateStrip();renderToday();switchView('todayView')};
 
 $('#touristSegment').querySelectorAll('button').forEach(b=>b.onclick=()=>{$('#touristSegment').querySelectorAll('button').forEach(x=>x.classList.remove('active'));b.classList.add('active');localStorage.setItem('touristLevel',b.dataset.level)});
 const tl=localStorage.getItem('touristLevel'); if(tl){$('#touristSegment').querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.level===tl))}
 
+const packing=['Passports / IDs','Flight confirmations','Driving licence','Bank cards + some cash','Phone chargers','Power bank','Laptop + work charger','Headphones','Light wind/rain jacket','Comfortable city shoes','Hiking shoes','Swimwear','Quick-dry towel','Sunscreen','Hat / sunglasses','Reusable water bottles','Small daypack','Basic medicines / first aid','Beach / water shoes','Layers for mountain evenings'];
+function renderPacking(){const done=JSON.parse(localStorage.getItem('packingV2')||'[]');$('#packingList').innerHTML=packing.map((x,i)=>`<label style="display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)"><input style="width:22px;height:22px" type="checkbox" data-pack="${i}" ${done.includes(i)?'checked':''}><span>${x}</span></label>`).join('');$$('[data-pack]').forEach(c=>c.onchange=()=>{let a=JSON.parse(localStorage.getItem('packingV2')||'[]');const i=+c.dataset.pack;a=c.checked?[...new Set([...a,i])]:a.filter(x=>x!==i);localStorage.setItem('packingV2',JSON.stringify(a))})}
 function loadExpenses(){return JSON.parse(localStorage.getItem('expensesV1')||'[]')}
 function renderExpenses(){
  const a=loadExpenses(), olga=a.filter(x=>x.payer==='Olga').reduce((s,x)=>s+x.amount,0), hila=a.filter(x=>x.payer==='Hila').reduce((s,x)=>s+x.amount,0), diff=(olga-hila)/2;
@@ -382,7 +418,8 @@ $('#addExpense').onclick=()=>{const amount=parseFloat($('#expenseAmount').value)
 $('#sharedNotes').value=localStorage.getItem('sharedNotesV1')||'';
 $('#saveNotes').onclick=()=>{localStorage.setItem('sharedNotesV1',$('#sharedNotes').value);alert('Saved on this device')}
 
-renderDateStrip();renderToday();renderTrip();renderExplore();renderExpenses();
+renderDateStrip();renderToday();renderTrip();renderExplore();renderExpenses();renderPacking();
+$('#regionSelect')?.addEventListener('change',renderExplore);
 </script>
 </body>
 </html>
