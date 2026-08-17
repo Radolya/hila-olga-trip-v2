@@ -227,27 +227,69 @@ textarea{min-height:105px;resize:vertical}
 
 <script>
 const days = [
- {date:'2026-09-09',dow:'Wed',city:'Rome',title:'Tel Aviv → Rome',flight:'TLV → FCO · 19:40–22:30',stay:'Appartamento – San Lorenzo',price:'€129',type:'flight',badges:['✈️ Flight','🌙 Late arrival']},
- {date:'2026-09-10',dow:'Thu',city:'Lisbon',title:'Rome → Lisbon',flight:'FCO → LIS · 18:45–21:00',stay:'The Enchantment of Lisbon (Alfama) 2',price:'€116',type:'flight',badges:['✈️ Flight','🏠 Alfama']},
- {date:'2026-09-11',dow:'Fri',city:'Lisbon',title:'Lisbon',stay:'The Enchantment of Lisbon (Alfama) 2',price:'€116',badges:['🎨 Art','🍜 Food','💃 Dance']},
- {date:'2026-09-12',dow:'Sat',city:'Lisbon',title:'Lisbon',stay:'The Enchantment of Lisbon (Alfama) 2',price:'€116',badges:['🌊 Coast','🛍 Markets','🌙 Nightlife']},
- {date:'2026-09-13',dow:'Sun',city:'Ericeira',title:'Lisbon → Ericeira',stay:'Ericeira Waves Apartment',price:'€121',badges:['🌊 Ocean','🏠 Apartment']},
- {date:'2026-09-14',dow:'Mon',city:'Ericeira',title:'Ericeira · Work day',stay:'Ericeira Waves Apartment',price:'€121',work:'07:00–15:00',badges:['💻 Work 07:00–15:00','🌅 Free after 15:00']},
- {date:'2026-09-15',dow:'Tue',city:'Ericeira',title:'Ericeira',stay:'Ericeira Waves Apartment',price:'€121',badges:['🧘 Yoga','🌊 Beach','🌅 Sunset']},
- {date:'2026-09-16',dow:'Wed',city:'Valencia',title:'Ericeira → Valencia',flight:'LIS → VAL · 20:45–23:20',stay:'Mirador5 Mercado Central',price:'€98',type:'flight',badges:['✈️ Flight','🌙 Late arrival']},
- {date:'2026-09-17',dow:'Thu',city:'Valencia',title:'Valencia · Work day',stay:'Mirador5 Mercado Central',price:'€98',work:'07:00–15:00',badges:['💻 Work 07:00–15:00','🎨 Free afternoon']},
- {date:'2026-09-18',dow:'Fri',city:'Royuela / Albarracín',title:'Valencia → Chelva → Chulilla → Royuela',stay:'Hostal Posada Royuela',price:'€60.68',car:true,image:'https://www.celebritycruises.com/blog/content/uploads/2024/06/best-towns-to-visit-in-spain-albarracin-near-valencia.jpg',badges:['🚗 Road trip','🥾 Hike','💎 Hidden-ish']},
- {date:'2026-09-19',dow:'Sat',city:'Arnés / Beceite',title:'Albarracín → Beceite area',stay:'Villa Dynamic Els Ports Resort',price:'€66.73',car:true,badges:['🚗 Mountains','🌊 Embalse de Pena','🥾 El Parrizal']},
- {date:'2026-09-20',dow:'Sun',city:'Cornudella de Montsant',title:'Beceite → Montsant / Priorat',stay:'Cal Triquell',price:'€90.63',car:true,badges:['🍷 Priorat','🥾 Montsant','🏘 Siurana area']},
- {date:'2026-09-21',dow:'Mon',city:'Tamariu',title:'Siurana → Costa Brava',stay:'Rental unit · Carrer de la Riera 38, Apt 25',price:'€122',car:true,checkin:'from 16:00',badges:['🚗 Road trip','🌊 Costa Brava','🏠 Check-in 16:00']},
- {date:'2026-09-22',dow:'Tue',city:'Tamariu',title:'Costa Brava',stay:'Rental unit · Tamariu',price:'€122',car:true,badges:['🌊 Wild beaches','💎 Hidden gems','🌅 Sunset']},
- {date:'2026-09-23',dow:'Wed',city:'Tamariu',title:'Costa Brava · Work day',stay:'Rental unit · Tamariu',price:'€122',work:'07:00–15:00',car:true,badges:['💻 Work 07:00–15:00','🌊 Free afternoon']},
- {date:'2026-09-24',dow:'Thu',city:'Barcelona',title:'Tamariu → Barcelona',stay:'Bright Double Room · Eixample',price:'€101',checkout:'Tamariu before 10:00',checkin:'Barcelona 14:00–23:00',badges:['🚗 Return car','🏙 Barcelona','🌙 Nightlife']},
- {date:'2026-09-25',dow:'Fri',city:'Barcelona',title:'Barcelona',stay:'Bright Double Room · Eixample',price:'€101',badges:['🎨 Art','🛍 Vintage','💃 Flamenco / dance']},
- {date:'2026-09-26',dow:'Sat',city:'Tel Aviv',title:'Barcelona → Tel Aviv',flight:'BCN → TLV · 18:05–02:45',badges:['✈️ Flight home','🧳 Last day']}
+ {date:'2026-09-09',dow:'Wed',city:'Rome',title:'Tel Aviv → Rome',flight:'TLV → FCO · 19:40–22:30',stay:'Appartamento – San Lorenzo',price:'€129',type:'flight',image:'rome-centro.webp',badges:['✈️ Flight','🌙 Late arrival','🎨 San Lorenzo']},
+ {date:'2026-09-10',dow:'Thu',city:'Rome → Lisbon',title:'Rome half-day → Lisbon',flight:'FCO → LIS · 18:45–21:00',stay:'The Enchantment of Lisbon (Alfama) 2',price:'€116',type:'flight',image:'rome-san-lorenzo.jpg',badges:['🏛 Half-day Rome','✈️ 18:45 flight','🏠 Alfama tonight']},
+ {date:'2026-09-11',dow:'Fri',city:'Lisbon',title:'Lisbon',stay:'The Enchantment of Lisbon (Alfama) 2',price:'€116',image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Praca_do_Comercio_Panorama.jpg',badges:['🎨 Art','🍜 Food','💃 Dance']},
+ {date:'2026-09-12',dow:'Sat',city:'Lisbon',title:'Lisbon',stay:'The Enchantment of Lisbon (Alfama) 2',price:'€116',image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Praca_do_Comercio_Panorama.jpg',badges:['🌊 Coast','🛍 Markets','🌙 Nightlife']},
+ {date:'2026-09-13',dow:'Sun',city:'Ericeira',title:'Lisbon → Ericeira',stay:'Ericeira Waves Apartment',price:'€121',image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Ericeira_cliff.JPG',badges:['🌊 Ocean','🏠 Apartment']},
+ {date:'2026-09-14',dow:'Mon',city:'Ericeira',title:'Ericeira · Work day',stay:'Ericeira Waves Apartment',price:'€121',work:'07:00–15:00',image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Ericeira_cliff.JPG',badges:['💻 Work 07:00–15:00','🌅 Free after 15:00']},
+ {date:'2026-09-15',dow:'Tue',city:'Ericeira',title:'Ericeira',stay:'Ericeira Waves Apartment',price:'€121',image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Ericeira_cliff.JPG',badges:['🧘 Yoga','🌊 Beach','🌅 Sunset']},
+ {date:'2026-09-16',dow:'Wed',city:'Valencia',title:'Ericeira → Valencia',flight:'LIS → VAL · 20:45–23:20',stay:'Mirador5 Mercado Central',price:'€98',type:'flight',image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Mercat_Central,_Valencia_06.jpg',badges:['✈️ Flight','🌙 Late arrival']},
+ {date:'2026-09-17',dow:'Thu',city:'Valencia',title:'Valencia · Work day',stay:'Mirador5 Mercado Central',price:'€98',work:'07:00–15:00',image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Mercat_Central,_Valencia_06.jpg',badges:['💻 Work 07:00–15:00','🎨 Free afternoon']},
+ {date:'2026-09-18',dow:'Fri',city:'Royuela / Albarracín',title:'Valencia → Chelva → Chulilla → Royuela',stay:'Hostal Posada Royuela',price:'€60.68',car:true,image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Albarrac%C3%ADn,_Teruel,_Espa%C3%B1a,_2014-01-10,_DD_022-025_PAN.JPG',badges:['🚗 Road trip','🥾 Hike','💎 Hidden-ish']},
+ {date:'2026-09-19',dow:'Sat',city:'Arnés / Beceite',title:'Albarracín → Beceite area',stay:'Villa Dynamic Els Ports Resort',price:'€66.73',car:true,image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Beceite,_Teruel_(Spain).JPG',badges:['🚗 Mountains','🌊 Embalse de Pena','🥾 El Parrizal']},
+ {date:'2026-09-20',dow:'Sun',city:'Cornudella de Montsant',title:'Beceite → Montsant / Priorat',stay:'Cal Triquell',price:'€90.63',car:true,image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Siurana_de_Tarragona,_08.jpg',badges:['🍷 Priorat','🥾 Montsant','🏘 Siurana area']},
+ {date:'2026-09-21',dow:'Mon',city:'Tamariu',title:'Siurana → Costa Brava',stay:'Rental unit · Carrer de la Riera 38, Apt 25',price:'€122',car:true,checkin:'from 16:00',image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Tamariu_Beach.jpg',badges:['🚗 Road trip','🌊 Costa Brava','🏠 Check-in 16:00']},
+ {date:'2026-09-22',dow:'Tue',city:'Tamariu',title:'Costa Brava',stay:'Rental unit · Tamariu',price:'€122',car:true,image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Cala_d%27Aigua_Xelida,_Tamariu,_Palafrugell,_Costa_Brava,_Catalunya.jpg',badges:['🌊 Wild beaches','💎 Hidden gems','🌅 Sunset']},
+ {date:'2026-09-23',dow:'Wed',city:'Tamariu',title:'Costa Brava · Work day',stay:'Rental unit · Tamariu',price:'€122',work:'07:00–15:00',car:true,image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Tamariu_2022-10-27_12.55.19.jpg',badges:['💻 Work 07:00–15:00','🌊 Free afternoon']},
+ {date:'2026-09-24',dow:'Thu',city:'Barcelona',title:'Tamariu → Barcelona',stay:'Bright Double Room · Eixample',price:'€101',checkout:'Tamariu before 10:00',checkin:'Barcelona 14:00–23:00',image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Vista_de_Barcelona.jpg',badges:['🚗 Return car','🏙 Barcelona','🌙 Nightlife']},
+ {date:'2026-09-25',dow:'Fri',city:'Barcelona',title:'Barcelona',stay:'Bright Double Room · Eixample',price:'€101',image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Sagrada_Familia,_Barcelona_(P1170674).jpg',badges:['🎨 Art','🛍 Vintage','💃 Flamenco / dance']},
+ {date:'2026-09-26',dow:'Sat',city:'Tel Aviv',title:'Barcelona → Tel Aviv',flight:'BCN → TLV · 18:05–02:45',image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Tel_Aviv_Skyline_at_the_beach_(2008)_01.jpg',badges:['✈️ Flight home','🧳 Last day']}
 ];
 
+
+
+const dailyBudgets = {
+ '2026-09-09':{basic:'€167–195',comfortable:'€205–245',rows:[['🏨 Rome stay','€129 confirmed'],['🚆/🚕 Airport → Rome','€28–55 est. for two'],['🥪 Late food / water','€10–25 est.']],note:'Flight cost is booked separately and is not added to this EUR day estimate.'},
+ '2026-09-10':{basic:'€176–215',comfortable:'€220–275',rows:[['🏨 Lisbon stay','€116 in plan'],['☕ Breakfast / coffee','€8–16'],['🍝 Lunch / snacks','€22–40'],['🏛 Sightseeing','€0–36'],['🚆 Rome → FCO','€28 Leonardo Express for two + local transfer']],note:'Pantheon: €7 pp. Basic Colosseum ticket: €18 pp. Flight price is kept in Trip costs, not double-counted here.'},
+ '2026-09-11':{basic:'€174–210',comfortable:'€235–290',rows:[['🏨 Lisbon stay','€116'],['🍜 Food','€45–70'],['🚋 Local transport','€8–14'],['🎨 Activities','€0–20'],['🍷 Drinks','€5–15']],note:'Basic assumes a mix of inexpensive/local food and simple activities.'},
+ '2026-09-12':{basic:'€180–220',comfortable:'€245–310',rows:[['🏨 Lisbon stay','€116'],['🍜 Food','€50–75'],['🚋 Local transport','€8–14'],['🎨 / market / coast','€0–20'],['🌙 Drinks / nightlife','€6–25']]},
+ '2026-09-13':{basic:'€181–220',comfortable:'€240–300',rows:[['🏨 Ericeira stay','€121'],['🚌 Lisbon → Ericeira','€15–30 est. for two'],['🍜 Food / groceries','€45–65'],['🌊 Activities','€0–15']]},
+ '2026-09-14':{basic:'€161–200',comfortable:'€215–270',rows:[['🏨 Ericeira stay','€121'],['💻 Work day food / groceries','€35–55'],['☕ Coffee','€5–10'],['🌅 After-work activity','€0–20']]},
+ '2026-09-15':{basic:'€166–220',comfortable:'€230–290',rows:[['🏨 Ericeira stay','€121'],['🍜 Food','€40–65'],['🧘 Yoga / wellness','€0–30'],['🌅 Local transport / extras','€5–15']]},
+ '2026-09-16':{basic:'€163–203',comfortable:'€220–270',rows:[['🏨 Valencia stay','€98'],['🍜 Food before flight','€40–60'],['🚇 Airport / local transport','€20–35'],['☕ Snacks / water','€5–10']],note:'Lisbon → Valencia flight is booked separately; the daily estimate avoids double-counting the ticket.'},
+ '2026-09-17':{basic:'€143–208',comfortable:'€200–260',rows:[['🏨 Valencia stay','€98'],['🍜 Food','€40–65'],['🚲/🚇 Local','€5–15'],['🎨 After-work activity','€0–30']]},
+ '2026-09-18':{basic:'€126–181',comfortable:'€185–240',rows:[['🏨 Hostal Posada Royuela','€60.68 confirmed'],['⛽ Fuel','€20–30 est.'],['🍜 Food / groceries','€40–70'],['🅿️ Parking / activities','€5–20']],note:'Car rental base/extra driver are Trip costs; fuel and parking are counted today.'},
+ '2026-09-19':{basic:'€147–197',comfortable:'€205–265',rows:[['🏨 Villa Dynamic Els Ports Resort','€66.73 confirmed'],['⛽ Fuel','€25–35 est.'],['🍜 Food','€45–70'],['🥾 Parking / hike fees','€10–25']]},
+ '2026-09-20':{basic:'€161–241',comfortable:'€225–310',rows:[['🏨 Cal Triquell','€90.63 confirmed'],['⛽ Fuel','€25–35 est.'],['🍜 Food','€45–70'],['🍷 Winery / activities','€0–45']]},
+ '2026-09-21':{basic:'€197–257',comfortable:'€260–335',rows:[['🏨 Tamariu stay','€122 in plan'],['⛽ Fuel','€30–40 est.'],['🍜 Food','€40–70'],['🅿️ Stops / parking','€5–25']]},
+ '2026-09-22':{basic:'€192–262',comfortable:'€250–325',rows:[['🏨 Tamariu stay','€122'],['⛽ Local driving','€15–25'],['🍜 Food / groceries','€45–75'],['🌊 Beach / parking / extras','€10–40']]},
+ '2026-09-23':{basic:'€177–237',comfortable:'€230–295',rows:[['🏨 Tamariu stay','€122'],['💻 Work-day food','€40–65'],['⛽ Local driving','€10–20'],['🌅 After-work activity','€5–30']]},
+ '2026-09-24':{basic:'€176–241',comfortable:'€240–310',rows:[['🏨 Barcelona stay','€101'],['⛽ Final car day','€15–25'],['🍜 Food','€45–75'],['🚇 Barcelona local','€10–20'],['🅿️ / extras','€5–20']]},
+ '2026-09-25':{basic:'€168–251',comfortable:'€250–350',rows:[['🏨 Barcelona stay','€101'],['🍜 Food','€50–80'],['🚇 Local transport','€12–20'],['🎨 Tickets','€0–30'],['🎶 Nightlife / drinks','€5–40']]},
+ '2026-09-26':{basic:'€55–120',comfortable:'€100–170',rows:[['🍜 Food','€35–60'],['🚇 Airport transport','€15–30'],['🎨 Last-day activity','€0–20'],['☕ Snacks / water','€5–10']],note:'Barcelona → Tel Aviv flight is booked separately and not double-counted here.'}
+};
+
+const stayPhotos = {
+ 'Appartamento – San Lorenzo':'https://a0.muscache.com/im/pictures/miso/Hosting-1196940242882260336/original/2badbfbe-017d-49d1-af2e-4b2bb93d6e89.jpeg?im_w=720',
+ 'The Enchantment of Lisbon (Alfama) 2':'https://a0.muscache.com/im/pictures/df2a7d9d-4e4f-4985-ad8a-32e1231956d6.jpg?im_w=720',
+ 'Ericeira Waves Apartment':'https://a0.muscache.com/im/pictures/miso/Hosting-633805143441057510/original/d37e3960-2037-4cde-9c2f-1a309cbe7c0f.jpeg?im_w=720',
+ 'Mirador5 Mercado Central':'https://a0.muscache.com/im/pictures/hosting/Hosting-942950889581012490/original/a6b5fa1d-8ba7-4484-9a57-3e0383455448.jpeg?im_w=720',
+ 'Hostal Posada Royuela':'stay-royuela.jpg',
+ 'Villa Dynamic Els Ports Resort':'stay-villa-dynamic.jpg',
+ 'Cal Triquell':'stay-cal-triquell.jpg',
+ 'Bright Double Room · Eixample':'https://a0.muscache.com/im/pictures/hosting/Hosting-1710843837683658715/original/42894b89-5145-432c-966e-7d2448c8c79a.jpeg?im_w=720'
+};
+
 const specialIdeas = {
+ '2026-09-10':[
+  {name:'San Lorenzo street-art walk',desc:'Start close to your Rome stay: murals, student/bohemian streets and a much less touristy feel than the historic-center checklist.',tags:['🎨 STREET ART','✓ NEAR STAY'],img:'rome-san-lorenzo.jpg',map:'https://www.google.com/maps/search/?api=1&query=San+Lorenzo+Rome+street+art'},
+  {name:'Pantheon + historic-center wander',desc:'If you want one classic, make it compact: Pantheon, surrounding lanes and coffee. Official 2026 full-price Pantheon entry is €7.',tags:['🏛 CLASSIC','€7 ENTRY'],img:'rome-centro.webp',map:'https://www.google.com/maps/search/?api=1&query=Pantheon+Rome'},
+  {name:'Colosseum — outside or timed entry',desc:'Iconic but optional. Official basic ticket is €18; timed Colosseum entry must be reserved. Do this only if you want one major classic before the flight.',tags:['🏛 OPTIONAL CLASSIC','BOOK AHEAD'],img:'rome-centro.webp',map:'https://www.google.com/maps/search/?api=1&query=Colosseum+Rome'},
+  {name:'Mercato Centrale quick lunch',desc:'Practical before heading toward the airport: lots of food choices near Termini, useful when you do not want a long sit-down lunch.',tags:['🍜 QUICK FOOD','🚆 PRACTICAL'],img:'',map:'https://www.google.com/maps/search/?api=1&query=Mercato+Centrale+Roma'},
+  {name:'San Lorenzo local lunch',desc:'Stay in the neighborhood for a relaxed meal instead of crossing Rome twice. The app will keep a few food suggestions rather than forcing a rating-based choice.',tags:['🍝 LOCAL','✓ NEAR STAY'],img:'',map:'https://www.google.com/maps/search/?api=1&query=San+Lorenzo+Rome+restaurants'},
+  {name:'Coffee + slow morning',desc:'If you are tired after the late arrival, keep Rome simple: coffee, San Lorenzo walk, one central landmark, lunch, then airport.',tags:['☕ EASY','PLAN B'],img:'',map:'https://www.google.com/maps/search/?api=1&query=coffee+San+Lorenzo+Rome'}
+ ],
  '2026-09-18':[
   {name:'Chelva old quarters',desc:'Historic quarters and viewpoints. Keep this stop flexible so Chulilla still feels relaxed.',tags:['LOCAL VIBE','HISTORIC'],img:'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Chelva%2C_Valencia%2C_Spain_-_panoramio_%282%29.jpg/800px-Chelva%2C_Valencia%2C_Spain_-_panoramio_%282%29.jpg',map:'https://www.google.com/maps/search/?api=1&query=Chelva+Spain'},
   {name:'Chulilla hanging bridges',desc:'Canyon + suspension bridges. For this road-trip day, choose a shorter out-and-back rather than a long full loop.',tags:['HIKE','CANYON'],img:'https://d2exd72xrrp1s7.cloudfront.net/www/000/1k3/1u/1uzdst47t4re618ds9xa4eblch30gyu8c8-uhi6373400/0?crop=false&q=80&width=1200',map:'https://www.google.com/maps/search/?api=1&query=Puentes+Colgantes+Chulilla'},
@@ -296,7 +338,13 @@ function renderDateStrip(){
 
 function genericRoute(d){
  let blocks=[];
- if(d.flight) blocks.push({t:'Flight',h:d.flight,p:'Keep airport transfer and check-in visible here.'});
+ if(d.date==='2026-09-10'){
+   blocks.push({t:'Morning',h:'San Lorenzo + coffee',p:'Start near the apartment: street art / neighborhood walk, no need to cross the city immediately.'});
+   blocks.push({t:'Late AM',h:'Choose ONE Rome classic',p:'Pantheon + center for an easy option, or Colosseum only if you book a timed entry and want the classic.'});
+   blocks.push({t:'Lunch',h:'Quick lunch',p:'San Lorenzo or Mercato Centrale / Termini area. Keep airport timing protected.'});
+   blocks.push({t:'15:00–15:15',h:'Leave San Lorenzo for FCO',p:'Allow ~15–25 min to reach Termini, then Leonardo Express takes 32 min and runs every 15 min. With waiting/walking, plan ~55–70 min door-to-airport. This gets you to FCO roughly 2+ hours before the 18:45 flight.'});
+   blocks.push({t:'18:45',h:'FCO → Lisbon',p:'Flight to Lisbon; arrival 21:00.'});
+ } else if(d.flight) blocks.push({t:'Flight',h:d.flight,p:'Keep airport transfer and check-in visible here.'});
  if(d.work) blocks.push({t:'07:00',h:'Work',p:`Fixed work block ${d.work}. Activities should only appear after work.`});
  if(!d.flight && !d.work) blocks.push({t:'Flexible',h:d.city,p:'This day is intentionally open. Use Ideas / Explore to shape it without losing the fixed overnight stay.'});
  blocks.push({t:'Tonight',h:d.stay||'Home',p:d.checkin?`Check-in ${d.checkin}`:'Fixed overnight base'});
@@ -334,17 +382,17 @@ function renderSub(d){
      `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(d.city)}`;
    box.innerHTML=`<div class="card"><h2>${d.car?'Road trip':'Day plan'}</h2>
     ${d.date==='2026-09-18'?`<div class="big">Flexible road-trip day</div><div class="sub">Use live Google Maps for final km, traffic, mountain-road time and toll choices.</div>`:`<div class="big">${d.work?'Work is fixed':'Keep it flexible'}</div><div class="sub">${d.work?`No activities should overlap ${d.work}.`:'Accommodation / flights stay fixed; the middle of the day can change.'}</div>`}
-    <div class="actions"><a class="action" target="_blank" href="${routeLink}">Open Maps</a><button class="action soft" onclick="setSub('ideas')">Ideas for this day</button></div></div>
+    <div class="actions"><a class="action" target="_blank" href="${routeLink}">Open Maps</a><button class="action soft" onclick="setSub('ideas')">Ideas for this day</button></div>${d.date==='2026-09-10'?`<div class="actions"><a class="action blue" target="_blank" href="https://www.trenitalia.com/en/connections/leonardo-express.html">Leonardo Express</a><a class="action soft" target="_blank" href="https://www.google.com/maps/dir/San+Lorenzo,+Rome/Rome+Fiumicino+Airport/">Airport route</a></div><div class="note">Official Leonardo Express: Termini ↔ FCO in 32 min, departures every 15 min, €14 per person.</div>`:''}</div>
     <div class="card">${blocks.map(x=>`<div class="stop"><div class="time">${esc(x.t)}</div><div><h3>${esc(x.h)}</h3><p>${esc(x.p)}</p></div></div>`).join('')}</div>`;
  }
  if(subtab==='budget'){
-   const hotel=d.price||'—';
-   let basic='Planning'; let comfort='Planning';
-   if(d.date==='2026-09-18'){basic='€95–125';comfort='€145–190'}
-   box.innerHTML=`<div class="card"><h2>Today's estimate · for two</h2><div class="moneygrid"><div class="moneybox"><small>Basic</small><b>${basic}</b></div><div class="moneybox"><small>Comfortable</small><b>${comfort}</b></div></div>
-   <div class="note">${d.date==='2026-09-18'?'Provisional planning range. Confirmed hotel is included; car insurance and other rental fees are not final.':'Budget model will be filled with location-specific 2026 food, groceries, transport and activity prices.'}</div></div>
-   <div class="card"><div class="row"><span>🏨 Stay</span><strong>${esc(hotel)}</strong></div>
-   ${d.date==='2026-09-18'?`<div class="row"><span>⛽ Fuel</span><strong>€18–26 est.</strong></div><div class="row"><span>🥪 Food / groceries</span><strong>€20–45 est.</strong></div><div class="row"><span>☕ Coffee / snacks</span><strong>€6–14 est.</strong></div><div class="row"><span>🎟 Activities / parking</span><strong>€0–15 est.</strong></div>`:''}</div>`;
+   const bd=dailyBudgets[d.date]||{basic:'Planning',comfortable:'Planning',rows:[['🏨 Stay',d.price||'—']]};
+   box.innerHTML=`<div class="card"><h2>Today's estimate · for two</h2>
+     <div class="moneygrid"><div class="moneybox"><small>Basic</small><b>${bd.basic}</b></div><div class="moneybox"><small>Comfortable</small><b>${bd.comfortable}</b></div></div>
+     <div class="note">Basic = simple/local meals, groceries when practical, limited paid activities. Comfortable = cafés, proper dinner, drinks and more flexibility.</div>
+   </div>
+   <div class="card"><h2>Breakdown</h2>${(bd.rows||[]).map(r=>`<div class="row"><span>${r[0]}</span><strong>${r[1]}</strong></div>`).join('')}${bd.note?`<div class="note">${bd.note}</div>`:''}</div>
+   ${d.car?`<div class="card"><h2>Car note</h2><div class="row"><span>Seat Arona base rental</span><strong>€310 trip cost</strong></div><div class="row"><span>Second driver</span><strong>€90</strong></div><div class="row"><span>Insurance / other fees</span><strong>TBD</strong></div><div class="note">Fuel and parking are included in the relevant day estimate; rental cost is not repeated every day.</div></div>`:''}`;
  }
  if(subtab==='stay'){
    if(!d.stay){box.innerHTML=`<div class="card"><div class="empty">No overnight stay on this date.</div></div>`;return}
@@ -352,7 +400,8 @@ function renderSub(d){
    const booking=d.stay.includes('Posada Royuela')?'https://www.booking.com/hotel/es/hostal-posada-royuela.html':
     d.date==='2026-09-21'||d.date==='2026-09-22'||d.date==='2026-09-23'?'https://www.airbnb.com/l/Jzao15r2':
     d.date==='2026-09-24'||d.date==='2026-09-25'?'https://www.airbnb.co.uk/rooms/1710843837683658715?unique_share_id=f0886ee2-c98e-4c92-bd74-9aa720e23bf4&viralityEntryPoint=1&s=76':'';
-   box.innerHTML=`<div class="card"><h2>${esc(d.stay)}</h2><div class="sub">${esc(d.city)}</div>
+   const stayPhoto=stayPhotos[d.stay];
+   box.innerHTML=`<div class="card">${stayPhoto?`<img src="${stayPhoto}" alt="${esc(d.stay)}" style="width:100%;height:235px;object-fit:cover;border-radius:18px;margin-bottom:15px" onerror="this.style.display='none'">`:''}<h2>${esc(d.stay)}</h2><div class="sub">${esc(d.city)}</div>
     <div class="row"><span>Price in plan</span><strong>${esc(d.price||'—')}</strong></div>
     ${d.checkin?`<div class="row"><span>Check-in</span><strong>${esc(d.checkin)}</strong></div>`:''}
     ${d.checkout?`<div class="row"><span>Check-out</span><strong>${esc(d.checkout)}</strong></div>`:''}
