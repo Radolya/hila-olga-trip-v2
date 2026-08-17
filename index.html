@@ -1,125 +1,388 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Hila + Olga — Sep 18</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="theme-color" content="#F5F3EE"/>
+<title>Hila + Olga — Portugal & Spain 2026</title>
 <style>
-:root{--bg:#f4f1ea;--card:#fffdfa;--text:#202522;--muted:#6b716d;--sage:#748371;--soft:#e8ece5;--line:#e3ded5}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,sans-serif}
-.app{max-width:520px;margin:auto;padding:18px 16px 92px}.eyebrow{font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:800}
-h1{font-size:30px;line-height:1.08;margin:6px 0 8px}.sub{font-size:18px;color:var(--muted)}
-.hero,.card{background:var(--card);border-radius:24px;overflow:hidden;box-shadow:0 8px 24px rgba(30,35,30,.08);margin:14px 0}
-.hero img,.place img{width:100%;height:210px;object-fit:cover;display:block}.pad,.card{padding:18px}.hero .pad{padding:18px}
-.tabs{position:sticky;top:0;z-index:5;display:flex;gap:8px;overflow:auto;padding:10px 0;background:rgba(244,241,234,.96);backdrop-filter:blur(8px)}
-.tab{border:0;border-radius:999px;padding:12px 16px;font-size:17px;font-weight:800;background:#e9e5dc;color:var(--text);white-space:nowrap}
-.tab.active{background:var(--text);color:white}.panel{display:none}.panel.active{display:block}
-.big{font-size:27px;font-weight:850}.chip{display:inline-block;background:var(--soft);padding:8px 11px;border-radius:999px;margin:8px 5px 0 0;font-weight:750}
-.stop{display:grid;grid-template-columns:78px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}.stop:last-child{border:0}
-.time{font-size:18px;font-weight:850}.stop h3{font-size:22px;margin:0 0 4px}.stop p{font-size:17px;line-height:1.4;margin:0;color:var(--muted)}
-.btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.btn{display:block;text-align:center;padding:14px 10px;border-radius:14px;text-decoration:none;font-size:17px;font-weight:850;background:var(--text);color:white}.btn.alt{background:var(--soft);color:var(--text)}
-.moneygrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.money{border:1px solid var(--line);border-radius:18px;padding:15px}.money b{font-size:25px;display:block;margin-top:5px}
-.line{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:17px}.line:last-child{border:0}
-.note{background:#f4f2ed;border-radius:14px;padding:13px;font-size:16px;line-height:1.45;margin-top:12px}.place{padding:0}.place .inside{padding:18px}.tag{display:inline-block;background:var(--soft);border-radius:999px;padding:7px 10px;font-size:14px;font-weight:800;margin-right:6px}
-nav{position:fixed;left:0;right:0;bottom:0;background:rgba(255,253,250,.97);border-top:1px solid var(--line);padding:10px}.nav{max-width:520px;margin:auto;display:grid;grid-template-columns:repeat(5,1fr);text-align:center;font-size:13px;color:var(--muted)}.nav strong{display:block;font-size:20px}
+:root{
+  --bg:#f5f3ee; --card:#fffdf9; --ink:#202520; --muted:#68716b;
+  --sage:#768578; --sage2:#e7ece6; --sea:#75949d; --sea2:#e5edf0;
+  --sand:#d5c8b4; --sand2:#f0e9df; --rose:#aa7f72; --line:#e4dfd6;
+  --shadow:0 9px 28px rgba(32,37,32,.07); --r:22px;
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+.app{max-width:560px;margin:0 auto;min-height:100vh;padding:env(safe-area-inset-top) 15px calc(92px + env(safe-area-inset-bottom))}
+.top{display:flex;align-items:center;justify-content:space-between;padding:15px 2px 10px}
+.brand{font-size:14px;text-transform:uppercase;letter-spacing:.14em;font-weight:850;color:var(--muted)}
+.tripname{font-size:20px;font-weight:850;margin-top:3px}
+.iconbtn{width:44px;height:44px;border:0;background:var(--card);border-radius:50%;box-shadow:var(--shadow);font-size:20px;color:var(--ink)}
+.date-strip{display:flex;gap:8px;overflow-x:auto;padding:5px 0 13px;scrollbar-width:none}
+.date-strip::-webkit-scrollbar{display:none}
+.datebtn{min-width:60px;border:1px solid var(--line);background:var(--card);border-radius:17px;padding:9px 6px;color:var(--muted)}
+.datebtn b{display:block;font-size:18px;color:var(--ink)}
+.datebtn small{font-size:12px;text-transform:uppercase}
+.datebtn.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.datebtn.active b{color:#fff}
+.hero{position:relative;border-radius:28px;overflow:hidden;background:linear-gradient(135deg,var(--sea2),var(--sand2));box-shadow:var(--shadow);min-height:244px;margin-bottom:14px}
+.hero.hasimg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.58))}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-content{position:relative;z-index:2;padding:22px;display:flex;min-height:244px;flex-direction:column;justify-content:flex-end}
+.hero.hasimg .hero-content{color:#fff}
+.kicker{font-size:14px;font-weight:850;letter-spacing:.09em;text-transform:uppercase;margin-bottom:7px}
+.hero h1{font-size:31px;line-height:1.08;margin:0 0 8px;letter-spacing:-.025em}
+.hero p{font-size:18px;line-height:1.4;margin:0;opacity:.92}
+.badges{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}
+.badge{font-size:14px;font-weight:780;padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.88);color:var(--ink)}
+.hero:not(.hasimg) .badge{background:var(--card)}
+.work{background:#fff5df;color:#755724}
+.tabs{position:sticky;top:0;z-index:20;display:flex;gap:7px;overflow-x:auto;background:rgba(245,243,238,.96);backdrop-filter:blur(12px);padding:9px 0 12px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{border:0;border-radius:999px;padding:12px 16px;background:#eae7df;color:var(--ink);font-size:17px;font-weight:850;white-space:nowrap}
+.tab.active{background:var(--ink);color:white}
+.panel{display:none}.panel.active{display:block}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:18px;margin:12px 0}
+.card h2{font-size:23px;line-height:1.15;margin:0 0 9px}
+.card h3{font-size:20px;line-height:1.2;margin:0 0 6px}
+.big{font-size:28px;font-weight:900;letter-spacing:-.02em}
+.sub{font-size:17px;line-height:1.4;color:var(--muted)}
+.meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:10px}
+.pill{background:var(--sage2);border-radius:999px;padding:8px 10px;font-weight:780;font-size:14px}
+.pill.blue{background:var(--sea2)}
+.pill.sand{background:var(--sand2)}
+.actions{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:14px}
+.action{display:block;text-decoration:none;text-align:center;border:0;border-radius:15px;padding:14px 10px;background:var(--ink);color:#fff;font-weight:850;font-size:16px}
+.action.soft{background:var(--sage2);color:var(--ink)}
+.action.blue{background:var(--sea2);color:var(--ink)}
+.stop{display:grid;grid-template-columns:74px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.stop:last-child{border-bottom:0}
+.time{font-size:17px;font-weight:900}
+.stop p{font-size:16.5px;line-height:1.42;color:var(--muted);margin:4px 0 0}
+.moneygrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.moneybox{border:1px solid var(--line);border-radius:18px;padding:16px}
+.moneybox small{font-weight:850;color:var(--muted);text-transform:uppercase}
+.moneybox b{font-size:25px;display:block;margin-top:5px}
+.row{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;padding:11px 0;border-bottom:1px solid var(--line);font-size:16.5px}
+.row:last-child{border-bottom:0}
+.note{background:#f4f1eb;border-radius:15px;padding:13px 14px;margin-top:12px;font-size:15.5px;line-height:1.45;color:#4f5852}
+.place{padding:0;overflow:hidden}
+.place img{display:block;width:100%;height:220px;object-fit:cover;background:var(--sea2)}
+.placebody{padding:18px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:9px}
+.tag{font-size:13px;font-weight:850;background:var(--sage2);padding:7px 9px;border-radius:999px}
+.save{float:right;border:0;width:43px;height:43px;border-radius:50%;background:var(--card);font-size:22px;box-shadow:0 5px 18px rgba(0,0,0,.12)}
+.save.saved{background:#e8eee7}
+.section-title{font-size:27px;margin:20px 3px 9px}
+.filterbar{display:flex;gap:8px;overflow:auto;scrollbar-width:none;padding:4px 0 10px}
+.filter{border:1px solid var(--line);background:var(--card);padding:10px 13px;border-radius:999px;font-weight:800;white-space:nowrap}
+.segment{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;background:#e8e5dd;padding:4px;border-radius:15px}
+.segment button{border:0;background:transparent;border-radius:12px;padding:10px 5px;font-weight:850;color:var(--muted)}
+.segment button.active{background:var(--card);box-shadow:0 3px 9px rgba(0,0,0,.06);color:var(--ink)}
+.tripday{display:grid;grid-template-columns:64px 1fr;gap:13px;padding:17px 0;border-bottom:1px solid var(--line)}
+.tripday:last-child{border:0}
+.tripdate{font-size:15px;color:var(--muted);font-weight:800}
+.tripdate b{display:block;font-size:23px;color:var(--ink)}
+.tripday h3{margin:0;font-size:20px}
+.tripday p{margin:4px 0 0;color:var(--muted);font-size:16px;line-height:1.35}
+.tripday.clickable{cursor:pointer}
+.mapbox{height:330px;border-radius:22px;background:linear-gradient(135deg,#dbe7e7,#ebe5d9);display:flex;align-items:center;justify-content:center;text-align:center;padding:35px;position:relative;overflow:hidden}
+.mapdot{position:absolute;width:18px;height:18px;border:4px solid #fff;border-radius:50%;background:var(--rose);box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.mapline{position:absolute;height:3px;background:rgba(69,94,91,.45);transform-origin:left center;border-radius:999px}
+.formrow{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+input,textarea,select{width:100%;border:1px solid var(--line);background:#fff;border-radius:14px;padding:13px;color:var(--ink);font-size:16px}
+textarea{min-height:105px;resize:vertical}
+.primary{width:100%;border:0;border-radius:15px;padding:14px;background:var(--ink);color:#fff;font-weight:850;font-size:17px;margin-top:9px}
+.expense{display:grid;grid-template-columns:1fr auto;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}
+.expense small{color:var(--muted)}
+.balance{font-size:26px;font-weight:900;margin-top:6px}
+.empty{padding:26px 10px;text-align:center;color:var(--muted)}
+.navbar{position:fixed;z-index:50;left:0;right:0;bottom:0;background:rgba(255,253,249,.96);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:8px 8px calc(8px + env(safe-area-inset-bottom))}
+.navinner{max-width:560px;margin:auto;display:grid;grid-template-columns:repeat(5,1fr)}
+.navbtn{border:0;background:transparent;padding:7px 1px;color:var(--muted);font-size:12.5px;font-weight:700}
+.navbtn span{display:block;font-size:21px;margin-bottom:2px}
+.navbtn.active{color:var(--ink);font-weight:900}
+.view{display:none}.view.active{display:block}
+.quicklist .row{cursor:pointer}
+.credit{font-size:12px;color:var(--muted);padding-top:8px}
+@media(max-width:390px){
+ .hero h1{font-size:28px}.hero p{font-size:17px}.stop{grid-template-columns:66px 1fr}
+ .actions{grid-template-columns:1fr}.moneygrid{grid-template-columns:1fr 1fr}
+}
 </style>
 </head>
 <body>
 <div class="app">
-  <div class="eyebrow">Hila + Olga · Friday, Sep 18</div>
-  <h1>Valencia → Chelva → Chulilla → Royuela</h1>
-  <div class="sub">Road-trip day · Spain</div>
-
-  <section class="hero">
-    <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Vista_de_Albarrac%C3%ADn.jpg" alt="Albarracín">
-    <div class="pad">
-      <div class="big">Flexible in the middle</div>
-      <div class="sub">Fixed tonight: Hostal Posada Royuela · €60.68</div>
-      <span class="chip">🚗 Seat Arona</span><span class="chip">🥾 Hike</span><span class="chip">💎 Hidden-ish</span>
-    </div>
-  </section>
-
-  <div class="tabs">
-    <button class="tab active" data-tab="route">Route</button>
-    <button class="tab" data-tab="budget">Budget</button>
-    <button class="tab" data-tab="stay">Stay</button>
-    <button class="tab" data-tab="ideas">Ideas</button>
+  <div class="top">
+    <div><div class="brand">Our shared trip</div><div class="tripname">Hila + Olga · 9–26 Sep 2026</div></div>
+    <button class="iconbtn" id="jumpToday" title="Go to Sep 18">✦</button>
   </div>
 
-  <section class="panel active" id="route">
-    <div class="card">
-      <div class="big">~222 km total</div>
-      <div class="sub">Approx. 4h driving before local detours</div>
-      <div class="note">Planning estimate only. Open Google Maps before departure for live traffic and the final road choice.</div>
-      <div class="btns">
-        <a class="btn" target="_blank" href="https://www.google.com/maps/dir/Valencia,+Spain/Chelva,+Spain/Chulilla,+Spain/Royuela,+Spain">Open route</a>
-        <a class="btn alt" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Hostal+Posada+Royuela">Stay map</a>
-      </div>
-    </div>
-    <div class="card">
-      <div class="stop"><div class="time">Morning</div><div><h3>Pick up Seat Arona</h3><p>Valencia. Stock up on water, fruit and easy road food.</p></div></div>
-      <div class="stop"><div class="time">+ ~50m</div><div><h3>Chelva</h3><p>Old quarters + a short walk. Valencia–Chelva is about 69–70 km by road.</p></div></div>
-      <div class="stop"><div class="time">+ ~21m</div><div><h3>Chulilla</h3><p>Hanging bridges / canyon. Use a shorter version today, not the full 16 km loop.</p></div></div>
-      <div class="stop"><div class="time">Evening</div><div><h3>Royuela</h3><p>Check in. Albarracín can be an optional evening walk if you still have energy.</p></div></div>
-    </div>
-  </section>
+  <main>
+    <section class="view active" id="todayView">
+      <div class="date-strip" id="dateStrip"></div>
+      <div id="todayContent"></div>
+    </section>
 
-  <section class="panel" id="budget">
-    <div class="card">
-      <h2>Today's estimate · for two</h2>
-      <div class="moneygrid">
-        <div class="money"><span>Basic</span><b>€95–125</b></div>
-        <div class="money"><span>Comfortable</span><b>€145–190</b></div>
-      </div>
-      <div class="note">Hotel included. Car rental is separate because insurance and other rental fees are still TBD.</div>
-    </div>
-    <div class="card">
-      <div class="line"><span>🏨 Hotel</span><b>€60.68</b></div>
-      <div class="line"><span>⛽ Fuel</span><b>€18–26</b></div>
-      <div class="line"><span>🥪 Food / groceries</span><b>€20–45</b></div>
-      <div class="line"><span>☕ Coffee / snacks</span><b>€6–14</b></div>
-      <div class="line"><span>🎟 Activities / parking</span><b>€0–15</b></div>
-    </div>
-    <div class="card">
-      <h2>Car rental · whole trip</h2>
-      <div class="line"><span>Base rental</span><b>€310</b></div>
-      <div class="line"><span>2nd driver (€15 × 6)</span><b>€90</b></div>
-      <div class="line"><span>Insurance</span><b>TBD</b></div>
-      <div class="line"><span>Known minimum</span><b>€400+</b></div>
-    </div>
-  </section>
+    <section class="view" id="tripView">
+      <h1 class="section-title">Trip</h1>
+      <div class="card"><div class="big">18 days</div><div class="sub">Rome → Lisbon → Ericeira → Valencia → Aragón → Priorat → Costa Brava → Barcelona</div></div>
+      <div class="card" id="tripTimeline"></div>
+    </section>
 
-  <section class="panel" id="stay">
-    <div class="card">
-      <h2>Hostal Posada Royuela</h2>
-      <div class="line"><span>Dates</span><b>18 → 19 Sep</b></div>
-      <div class="line"><span>Confirmed total</span><b>€60.68</b></div>
-      <div class="line"><span>Status</span><b>Confirmed</b></div>
-      <div class="btns">
-        <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Hostal+Posada+Royuela">Maps</a>
-        <a class="btn alt" target="_blank" href="https://www.booking.com/searchresults.html?ss=Hostal+Posada+Royuela">Booking</a>
+    <section class="view" id="exploreView">
+      <h1 class="section-title">Explore</h1>
+      <div class="card">
+        <h2>Tourist Classics</h2>
+        <div class="segment" id="touristSegment">
+          <button data-level="ON">ON</button><button class="active" data-level="LOW">LOW</button><button data-level="OFF">OFF</button>
+        </div>
+        <div class="note">LOW = show famous places only when they are genuinely worth the detour.</div>
       </div>
-    </div>
-  </section>
+      <div class="filterbar">
+        <button class="filter">💎 Hidden Gems</button><button class="filter">🌊 Wild Beaches</button>
+        <button class="filter">🎨 Art</button><button class="filter">🧘 Yoga & Sound</button>
+        <button class="filter">🎶 Tonight</button><button class="filter">🍜 Food</button>
+      </div>
+      <div id="exploreCards"></div>
+    </section>
 
-  <section class="panel" id="ideas">
-    <article class="card place">
-      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Chelva%2C_Valencia%2C_Spain_-_panoramio_%282%29.jpg" alt="Chelva">
-      <div class="inside"><span class="tag">LOCAL VIBE</span><h2>Chelva old quarters</h2><p class="sub">Historic neighbourhoods, viewpoints and a flexible short stop.</p><div class="btns"><a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Chelva+Spain">Map</a><a class="btn alt" target="_blank" href="https://commons.wikimedia.org/wiki/Chelva">Photos</a></div></div>
-    </article>
-    <article class="card place">
-      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Entornos_Chulilla.JPG" alt="Chulilla">
-      <div class="inside"><span class="tag">HIKE</span><span class="tag">CANYON</span><h2>Chulilla hanging bridges</h2><p class="sub">Classic route around 10 km; the long circular route is about 16 km / 4–6 h. Choose a shorter out-and-back today.</p><div class="btns"><a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Puentes+Colgantes+Chulilla">Map</a><a class="btn alt" target="_blank" href="https://www.chulilla.net/en/route-hanging-bridges-chulilla/">Trail info</a></div></div>
-    </article>
-    <article class="card place">
-      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Calle_de_Albarracin.jpg" alt="Albarracín">
-      <div class="inside"><span class="tag">EVENING</span><h2>Albarracín after check-in</h2><p class="sub">Optional evening walk and dinner if the day still feels light.</p><div class="btns"><a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Albarracin+Spain">Map</a><a class="btn alt" target="_blank" href="https://commons.wikimedia.org/wiki/Category:Albarrac%C3%ADn">Photos</a></div></div>
-    </article>
-  </section>
+    <section class="view" id="mapView">
+      <h1 class="section-title">Map</h1>
+      <div class="card">
+        <div class="mapbox">
+          <div class="mapline" style="width:190px;left:80px;top:180px;transform:rotate(-17deg)"></div>
+          <div class="mapline" style="width:165px;left:240px;top:125px;transform:rotate(22deg)"></div>
+          <span class="mapdot" style="left:65px;top:190px"></span>
+          <span class="mapdot" style="left:236px;top:132px;background:var(--sage)"></span>
+          <span class="mapdot" style="right:62px;top:190px;background:var(--sea)"></span>
+          <div><div class="big">Route map</div><div class="sub">Use Google Maps for live routing, traffic and toll choices.</div></div>
+        </div>
+        <div class="actions">
+          <a class="action" target="_blank" href="https://www.google.com/maps/dir/Lisbon,+Portugal/Ericeira,+Portugal">Portugal</a>
+          <a class="action soft" target="_blank" href="https://www.google.com/maps/dir/Valencia,+Spain/Chelva,+Spain/Chulilla,+Spain/Royuela,+Spain/Arnes,+Spain/Cornudella+de+Montsant,+Spain/Tamariu,+Spain/Barcelona,+Spain">Spain road trip</a>
+        </div>
+      </div>
+      <div class="card quicklist">
+        <h2>Saved map links</h2>
+        <div class="row"><span>El Parrizal</span><a target="_blank" href="https://www.google.com/maps/place/El+Parrizal/@40.8351478,0.0755768,11.25z/data=!4m15!1m8!3m7!1s0xd5e73abeff0fd43:0x29412a3ac541cf0!2sTeruel,+Spain!3b1!8m2!3d40.3456879!4d-1.1064345!16zL20vMGh3NTA!3m5!1s0x12a09100758e84d1:0x57493aac48102cd5!8m2!3d40.8221401!4d0.187876!16s%2Fg%2F11lnl9m7nv">Open ↗</a></div>
+        <div class="row"><span>Hostal Posada Royuela</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Hostal+Posada+Royuela">Open ↗</a></div>
+        <div class="row"><span>Tamariu home base</span><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Carrer+de+la+Riera+38+Tamariu+Spain">Open ↗</a></div>
+      </div>
+    </section>
+
+    <section class="view" id="moreView">
+      <h1 class="section-title">More</h1>
+      <div class="card">
+        <h2>Expenses · who paid?</h2>
+        <div class="formrow"><input id="expenseAmount" type="number" step="0.01" placeholder="€ amount"><select id="expensePayer"><option>Olga</option><option>Hila</option></select></div>
+        <input id="expenseTitle" placeholder="Dinner, fuel, tickets…" style="margin-top:9px">
+        <button class="primary" id="addExpense">Add expense</button>
+        <div id="balanceBox"></div><div id="expenseList"></div>
+      </div>
+      <div class="card">
+        <h2>Shared notes</h2>
+        <textarea id="sharedNotes" placeholder="Ideas, shopping, reminders…"></textarea>
+        <button class="primary" id="saveNotes">Save on this device</button>
+        <div class="note">This V1 saves notes and expenses locally on the current phone. Supabase is the next step for true shared syncing between both phones.</div>
+      </div>
+      <div class="card">
+        <h2>Quick access</h2>
+        <div class="row"><span>🚗 Seat Arona rental</span><strong>18–24 Sep</strong></div>
+        <div class="row"><span>Base rental</span><strong>€310</strong></div>
+        <div class="row"><span>Second driver</span><strong>€90</strong></div>
+        <div class="row"><span>Insurance / other fees</span><strong>TBD</strong></div>
+        <div class="row"><span>Known minimum</span><strong>€400+</strong></div>
+      </div>
+    </section>
+  </main>
 </div>
 
-<nav><div class="nav"><div><strong>☀️</strong>Today</div><div><strong>🧳</strong>Trip</div><div><strong>🧭</strong>Explore</div><div><strong>📍</strong>Map</div><div><strong>•••</strong>More</div></div></nav>
+<nav class="navbar">
+ <div class="navinner">
+  <button class="navbtn active" data-view="todayView"><span>☀️</span>Today</button>
+  <button class="navbtn" data-view="tripView"><span>🧳</span>Trip</button>
+  <button class="navbtn" data-view="exploreView"><span>🧭</span>Explore</button>
+  <button class="navbtn" data-view="mapView"><span>📍</span>Map</button>
+  <button class="navbtn" data-view="moreView"><span>•••</span>More</button>
+ </div>
+</nav>
+
 <script>
-document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active')})
+const days = [
+ {date:'2026-09-09',dow:'Wed',city:'Rome',title:'Tel Aviv → Rome',flight:'TLV → FCO · 19:40–22:30',stay:'Appartamento – San Lorenzo',price:'€129',type:'flight',badges:['✈️ Flight','🌙 Late arrival']},
+ {date:'2026-09-10',dow:'Thu',city:'Lisbon',title:'Rome → Lisbon',flight:'FCO → LIS · 18:45–21:00',stay:'The Enchantment of Lisbon (Alfama) 2',price:'€116',type:'flight',badges:['✈️ Flight','🏠 Alfama']},
+ {date:'2026-09-11',dow:'Fri',city:'Lisbon',title:'Lisbon',stay:'The Enchantment of Lisbon (Alfama) 2',price:'€116',badges:['🎨 Art','🍜 Food','💃 Dance']},
+ {date:'2026-09-12',dow:'Sat',city:'Lisbon',title:'Lisbon',stay:'The Enchantment of Lisbon (Alfama) 2',price:'€116',badges:['🌊 Coast','🛍 Markets','🌙 Nightlife']},
+ {date:'2026-09-13',dow:'Sun',city:'Ericeira',title:'Lisbon → Ericeira',stay:'Ericeira Waves Apartment',price:'€121',badges:['🌊 Ocean','🏠 Apartment']},
+ {date:'2026-09-14',dow:'Mon',city:'Ericeira',title:'Ericeira · Work day',stay:'Ericeira Waves Apartment',price:'€121',work:'07:00–15:00',badges:['💻 Work 07:00–15:00','🌅 Free after 15:00']},
+ {date:'2026-09-15',dow:'Tue',city:'Ericeira',title:'Ericeira',stay:'Ericeira Waves Apartment',price:'€121',badges:['🧘 Yoga','🌊 Beach','🌅 Sunset']},
+ {date:'2026-09-16',dow:'Wed',city:'Valencia',title:'Ericeira → Valencia',flight:'LIS → VAL · 20:45–23:20',stay:'Mirador5 Mercado Central',price:'€98',type:'flight',badges:['✈️ Flight','🌙 Late arrival']},
+ {date:'2026-09-17',dow:'Thu',city:'Valencia',title:'Valencia · Work day',stay:'Mirador5 Mercado Central',price:'€98',work:'07:00–15:00',badges:['💻 Work 07:00–15:00','🎨 Free afternoon']},
+ {date:'2026-09-18',dow:'Fri',city:'Royuela / Albarracín',title:'Valencia → Chelva → Chulilla → Royuela',stay:'Hostal Posada Royuela',price:'€60.68',car:true,image:'https://www.celebritycruises.com/blog/content/uploads/2024/06/best-towns-to-visit-in-spain-albarracin-near-valencia.jpg',badges:['🚗 Road trip','🥾 Hike','💎 Hidden-ish']},
+ {date:'2026-09-19',dow:'Sat',city:'Arnés / Beceite',title:'Albarracín → Beceite area',stay:'Villa Dynamic Els Ports Resort',price:'€66.73',car:true,badges:['🚗 Mountains','🌊 Embalse de Pena','🥾 El Parrizal']},
+ {date:'2026-09-20',dow:'Sun',city:'Cornudella de Montsant',title:'Beceite → Montsant / Priorat',stay:'Cal Triquell',price:'€90.63',car:true,badges:['🍷 Priorat','🥾 Montsant','🏘 Siurana area']},
+ {date:'2026-09-21',dow:'Mon',city:'Tamariu',title:'Siurana → Costa Brava',stay:'Rental unit · Carrer de la Riera 38, Apt 25',price:'€122',car:true,checkin:'from 16:00',badges:['🚗 Road trip','🌊 Costa Brava','🏠 Check-in 16:00']},
+ {date:'2026-09-22',dow:'Tue',city:'Tamariu',title:'Costa Brava',stay:'Rental unit · Tamariu',price:'€122',car:true,badges:['🌊 Wild beaches','💎 Hidden gems','🌅 Sunset']},
+ {date:'2026-09-23',dow:'Wed',city:'Tamariu',title:'Costa Brava · Work day',stay:'Rental unit · Tamariu',price:'€122',work:'07:00–15:00',car:true,badges:['💻 Work 07:00–15:00','🌊 Free afternoon']},
+ {date:'2026-09-24',dow:'Thu',city:'Barcelona',title:'Tamariu → Barcelona',stay:'Bright Double Room · Eixample',price:'€101',checkout:'Tamariu before 10:00',checkin:'Barcelona 14:00–23:00',badges:['🚗 Return car','🏙 Barcelona','🌙 Nightlife']},
+ {date:'2026-09-25',dow:'Fri',city:'Barcelona',title:'Barcelona',stay:'Bright Double Room · Eixample',price:'€101',badges:['🎨 Art','🛍 Vintage','💃 Flamenco / dance']},
+ {date:'2026-09-26',dow:'Sat',city:'Tel Aviv',title:'Barcelona → Tel Aviv',flight:'BCN → TLV · 18:05–02:45',badges:['✈️ Flight home','🧳 Last day']}
+];
+
+const specialIdeas = {
+ '2026-09-18':[
+  {name:'Chelva old quarters',desc:'Historic quarters and viewpoints. Keep this stop flexible so Chulilla still feels relaxed.',tags:['LOCAL VIBE','HISTORIC'],img:'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Chelva%2C_Valencia%2C_Spain_-_panoramio_%282%29.jpg/800px-Chelva%2C_Valencia%2C_Spain_-_panoramio_%282%29.jpg',map:'https://www.google.com/maps/search/?api=1&query=Chelva+Spain'},
+  {name:'Chulilla hanging bridges',desc:'Canyon + suspension bridges. For this road-trip day, choose a shorter out-and-back rather than a long full loop.',tags:['HIKE','CANYON'],img:'https://d2exd72xrrp1s7.cloudfront.net/www/000/1k3/1u/1uzdst47t4re618ds9xa4eblch30gyu8c8-uhi6373400/0?crop=false&q=80&width=1200',map:'https://www.google.com/maps/search/?api=1&query=Puentes+Colgantes+Chulilla'},
+  {name:'Albarracín evening',desc:'Optional after check-in if you still have energy: old streets, viewpoints and dinner.',tags:['EVENING','BEAUTIFUL'],img:'https://www.celebritycruises.com/blog/content/uploads/2024/06/best-towns-to-visit-in-spain-albarracin-near-valencia.jpg',map:'https://www.google.com/maps/search/?api=1&query=Albarracin+Spain'}
+ ],
+ '2026-09-19':[
+  {name:'El Parrizal',desc:'One of your saved places. Nature walk through the Beceite area.',tags:['SAVED','NATURE'],img:'',map:'https://www.google.com/maps/place/El+Parrizal/@40.8351478,0.0755768,11.25z/data=!4m15!1m8!3m7!1s0xd5e73abeff0fd43:0x29412a3ac541cf0!2sTeruel,+Spain!3b1!8m2!3d40.3456879!4d-1.1064345!16zL20vMGh3NTA!3m5!1s0x12a09100758e84d1:0x57493aac48102cd5!8m2!3d40.8221401!4d0.187876!16s%2Fg%2F11lnl9m7nv'},
+  {name:'Embalse de Pena',desc:'Water stop already in your itinerary. Good candidate for a relaxed nature break.',tags:['WATER','SCENIC'],img:'',map:'https://www.google.com/maps/search/?api=1&query=Embalse+de+Pena+Spain'}
+ ],
+ '2026-09-20':[
+  {name:'Montsant Natural Park',desc:'Short-to-medium hike, viewpoints and enough time to sit and enjoy the landscape.',tags:['HIKE','VIEW'],img:'',map:'https://www.google.com/maps/search/?api=1&query=Parc+Natural+de+la+Serra+de+Montsant'},
+  {name:'Priorat winery',desc:'A winery stop fits this region well. Add a specific producer after checking opening hours and tasting availability.',tags:['WINE','OPTIONAL'],img:'',map:'https://www.google.com/maps/search/?api=1&query=Priorat+winery'}
+ ],
+ '2026-09-22':[
+  {name:'Wild Costa Brava beach',desc:'Explore mode will prioritize beautiful coves with fewer people, reachable reasonably by car.',tags:['WILD BEACH','FEWER PEOPLE'],img:'',map:'https://www.google.com/maps/search/?api=1&query=Tamariu+Costa+Brava+calas'}
+ ]
+};
+
+const exploreSeed = [
+ {name:'Wild beaches',desc:'Beautiful coves, fewer people, realistic parking and walking info.',tags:['COSTA BRAVA','NATURE'],emoji:'🌊'},
+ {name:'Art & alternative',desc:'Contemporary art, graffiti, independent spaces, markets and unusual venues.',tags:['LISBON','VALENCIA','BARCELONA'],emoji:'🎨'},
+ {name:'Yoga & sound',desc:'Drop-in yoga, sound healing, ecstatic dance and body-based events around your real dates.',tags:['ERICEIRA','LISBON'],emoji:'🧘'},
+ {name:'Tonight',desc:'Local bars, jazz, rock, electronic, salsa, underground and non-touristy flamenco.',tags:['MUSIC','DANCE'],emoji:'🎶'},
+ {name:'Food',desc:'Asian, local food, street food, vegan options, salads, greens and simple road food.',tags:['FOOD PROFILE'],emoji:'🍜'},
+ {name:'Hidden gems',desc:'Ruins, viewpoints, swimming spots, tiny villages, wineries and strange beautiful places.',tags:['LOW TOURISM'],emoji:'💎'}
+];
+
+let currentDate='2026-09-18';
+let subtab='route';
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+
+function dateLabel(d){const dt=new Date(d.date+'T12:00:00');return {day:dt.getDate(),mon:dt.toLocaleString('en',{month:'short'})};}
+function renderDateStrip(){
+ const strip=$('#dateStrip'); strip.innerHTML=days.map(d=>{const x=dateLabel(d);return `<button class="datebtn ${d.date===currentDate?'active':''}" data-date="${d.date}"><small>${d.dow}</small><b>${x.day}</b><small>${x.mon}</small></button>`}).join('');
+ $$('.datebtn').forEach(b=>b.onclick=()=>{currentDate=b.dataset.date;subtab='route';renderDateStrip();renderToday();});
+ setTimeout(()=>$('.datebtn.active')?.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'}),20)
+}
+
+function genericRoute(d){
+ let blocks=[];
+ if(d.flight) blocks.push({t:'Flight',h:d.flight,p:'Keep airport transfer and check-in visible here.'});
+ if(d.work) blocks.push({t:'07:00',h:'Work',p:`Fixed work block ${d.work}. Activities should only appear after work.`});
+ if(!d.flight && !d.work) blocks.push({t:'Flexible',h:d.city,p:'This day is intentionally open. Use Ideas / Explore to shape it without losing the fixed overnight stay.'});
+ blocks.push({t:'Tonight',h:d.stay||'Home',p:d.checkin?`Check-in ${d.checkin}`:'Fixed overnight base'});
+ return blocks;
+}
+
+function route18(){
+ return [
+  {t:'Morning',h:'Pick up Seat Arona',p:'Valencia. Stock up on water, fruit, breakfast/road food before leaving the city.'},
+  {t:'~50m',h:'Chelva',p:'Old quarters + a short walk. Keep timing flexible rather than over-scheduling.'},
+  {t:'~20m',h:'Chulilla',p:'Hanging bridges / canyon. Use a shorter route today, with time to stop and enjoy the views.'},
+  {t:'Evening',h:'Royuela',p:'Check in at Hostal Posada Royuela. Albarracín can stay optional for sunset / dinner.'}
+ ];
+}
+function getIdeas(d){return specialIdeas[d.date]||[]}
+
+function renderToday(){
+ const d=days.find(x=>x.date===currentDate);
+ const image=d.image||'';
+ const badges=(d.badges||[]).map(x=>`<span class="badge ${x.includes('Work')?'work':''}">${esc(x)}</span>`).join('');
+ const hero=`<section class="hero ${image?'hasimg':''}">${image?`<img src="${image}" alt="${esc(d.city)}">`:''}<div class="hero-content"><div class="kicker">${d.dow} · ${dateLabel(d).day} ${dateLabel(d).mon}</div><h1>${esc(d.title)}</h1><p>${esc(d.city)}${d.stay?` · Tonight: ${esc(d.stay)}`:''}</p><div class="badges">${badges}</div></div></section>`;
+ const tabs=`<div class="tabs"><button class="tab ${subtab==='route'?'active':''}" data-sub="route">Route</button><button class="tab ${subtab==='budget'?'active':''}" data-sub="budget">Budget</button><button class="tab ${subtab==='stay'?'active':''}" data-sub="stay">Stay</button><button class="tab ${subtab==='ideas'?'active':''}" data-sub="ideas">Ideas</button></div>`;
+ $('#todayContent').innerHTML=hero+tabs+`<div id="subcontent"></div>`;
+ $$('.tab').forEach(b=>b.onclick=()=>{subtab=b.dataset.sub;renderToday();});
+ renderSub(d);
+}
+
+function renderSub(d){
+ const box=$('#subcontent');
+ if(subtab==='route'){
+   const blocks=d.date==='2026-09-18'?route18():genericRoute(d);
+   let routeLink=d.date==='2026-09-18'?'https://www.google.com/maps/dir/Valencia,+Spain/Chelva,+Spain/Chulilla,+Spain/Royuela,+Spain':
+     `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(d.city)}`;
+   box.innerHTML=`<div class="card"><h2>${d.car?'Road trip':'Day plan'}</h2>
+    ${d.date==='2026-09-18'?`<div class="big">Flexible road-trip day</div><div class="sub">Use live Google Maps for final km, traffic, mountain-road time and toll choices.</div>`:`<div class="big">${d.work?'Work is fixed':'Keep it flexible'}</div><div class="sub">${d.work?`No activities should overlap ${d.work}.`:'Accommodation / flights stay fixed; the middle of the day can change.'}</div>`}
+    <div class="actions"><a class="action" target="_blank" href="${routeLink}">Open Maps</a><button class="action soft" onclick="setSub('ideas')">Ideas for this day</button></div></div>
+    <div class="card">${blocks.map(x=>`<div class="stop"><div class="time">${esc(x.t)}</div><div><h3>${esc(x.h)}</h3><p>${esc(x.p)}</p></div></div>`).join('')}</div>`;
+ }
+ if(subtab==='budget'){
+   const hotel=d.price||'—';
+   let basic='Planning'; let comfort='Planning';
+   if(d.date==='2026-09-18'){basic='€95–125';comfort='€145–190'}
+   box.innerHTML=`<div class="card"><h2>Today's estimate · for two</h2><div class="moneygrid"><div class="moneybox"><small>Basic</small><b>${basic}</b></div><div class="moneybox"><small>Comfortable</small><b>${comfort}</b></div></div>
+   <div class="note">${d.date==='2026-09-18'?'Provisional planning range. Confirmed hotel is included; car insurance and other rental fees are not final.':'Budget model will be filled with location-specific 2026 food, groceries, transport and activity prices.'}</div></div>
+   <div class="card"><div class="row"><span>🏨 Stay</span><strong>${esc(hotel)}</strong></div>
+   ${d.date==='2026-09-18'?`<div class="row"><span>⛽ Fuel</span><strong>€18–26 est.</strong></div><div class="row"><span>🥪 Food / groceries</span><strong>€20–45 est.</strong></div><div class="row"><span>☕ Coffee / snacks</span><strong>€6–14 est.</strong></div><div class="row"><span>🎟 Activities / parking</span><strong>€0–15 est.</strong></div>`:''}</div>`;
+ }
+ if(subtab==='stay'){
+   if(!d.stay){box.innerHTML=`<div class="card"><div class="empty">No overnight stay on this date.</div></div>`;return}
+   const map=`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(d.stay+' '+d.city)}`;
+   const booking=d.stay.includes('Posada Royuela')?'https://www.booking.com/hotel/es/hostal-posada-royuela.html':
+    d.date==='2026-09-21'||d.date==='2026-09-22'||d.date==='2026-09-23'?'https://www.airbnb.com/l/Jzao15r2':
+    d.date==='2026-09-24'||d.date==='2026-09-25'?'https://www.airbnb.co.uk/rooms/1710843837683658715?unique_share_id=f0886ee2-c98e-4c92-bd74-9aa720e23bf4&viralityEntryPoint=1&s=76':'';
+   box.innerHTML=`<div class="card"><h2>${esc(d.stay)}</h2><div class="sub">${esc(d.city)}</div>
+    <div class="row"><span>Price in plan</span><strong>${esc(d.price||'—')}</strong></div>
+    ${d.checkin?`<div class="row"><span>Check-in</span><strong>${esc(d.checkin)}</strong></div>`:''}
+    ${d.checkout?`<div class="row"><span>Check-out</span><strong>${esc(d.checkout)}</strong></div>`:''}
+    <div class="actions"><a class="action" target="_blank" href="${map}">Maps</a>${booking?`<a class="action soft" target="_blank" href="${booking}">Reservation</a>`:'<button class="action soft">Reservation link later</button>'}</div>
+    <div class="note">Apartment days can support breakfast at home. The final version will show a supermarket / bakery option the evening before or early in the morning.</div></div>`;
+ }
+ if(subtab==='ideas'){
+   const ideas=getIdeas(d);
+   if(!ideas.length){box.innerHTML=`<div class="card"><h2>Ideas for ${esc(d.city)}</h2><div class="sub">This is where we’ll add researched hidden gems, food, coffee, art, yoga, sound healing, sunset and nightlife for this exact date.</div><div class="actions"><button class="action" onclick="goExplore()">Open Explore</button><a class="action soft" target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(d.city+' things to do')}">Google Maps</a></div></div>`;return}
+   box.innerHTML=ideas.map((p,i)=>placeCard(p,`${d.date}-${i}`)).join('');
+   bindSave();
+ }
+}
+window.setSub=s=>{subtab=s;renderToday()}
+window.goExplore=()=>switchView('exploreView');
+
+function placeCard(p,id){
+ const saved=JSON.parse(localStorage.getItem('savedPlaces')||'[]').includes(id);
+ const media=p.img?`<img src="${p.img}" alt="${esc(p.name)}" onerror="this.style.display='none'">`:`<div style="height:135px;background:linear-gradient(135deg,var(--sea2),var(--sand2));display:flex;align-items:center;justify-content:center;font-size:48px">💎</div>`;
+ return `<article class="card place">${media}<div class="placebody"><button class="save ${saved?'saved':''}" data-save="${id}" aria-label="Save">${saved?'♥':'♡'}</button><div class="tags">${(p.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div><h2>${esc(p.name)}</h2><div class="sub">${esc(p.desc)}</div><div class="actions"><a class="action" target="_blank" href="${p.map}">Google Maps</a><button class="action soft" data-save="${id}">${saved?'Saved ♥':'Save ♡'}</button></div></div></article>`
+}
+function bindSave(){
+ $$('[data-save]').forEach(b=>b.onclick=()=>{const id=b.dataset.save;let a=JSON.parse(localStorage.getItem('savedPlaces')||'[]');a=a.includes(id)?a.filter(x=>x!==id):[...a,id];localStorage.setItem('savedPlaces',JSON.stringify(a));renderSub(days.find(x=>x.date===currentDate));});
+}
+
+function renderTrip(){
+ $('#tripTimeline').innerHTML=days.map(d=>{const x=dateLabel(d);return `<div class="tripday clickable" data-tripdate="${d.date}"><div class="tripdate">${d.dow}<b>${x.day}</b>${x.mon}</div><div><h3>${esc(d.title)}</h3><p>${d.work?`💻 ${esc(d.work)} · `:''}${esc(d.stay||d.flight||'')}</p></div></div>`}).join('');
+ $$('[data-tripdate]').forEach(x=>x.onclick=()=>{currentDate=x.dataset.tripdate;subtab='route';renderDateStrip();renderToday();switchView('todayView')})
+}
+function renderExplore(){
+ $('#exploreCards').innerHTML=exploreSeed.map((p,i)=>`<div class="card"><div style="font-size:40px;margin-bottom:9px">${p.emoji}</div><div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div><h2>${p.name}</h2><div class="sub">${p.desc}</div><div class="actions"><a class="action" target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.name+' Portugal Spain')}">Search Maps</a><button class="action soft">Curated list next</button></div></div>`).join('');
+}
+function switchView(id){
+ $$('.view').forEach(v=>v.classList.toggle('active',v.id===id)); $$('.navbtn').forEach(n=>n.classList.toggle('active',n.dataset.view===id)); window.scrollTo({top:0,behavior:'smooth'});
+}
+$$('.navbtn').forEach(b=>b.onclick=()=>switchView(b.dataset.view));
+$('#jumpToday').onclick=()=>{currentDate='2026-09-18';subtab='route';renderDateStrip();renderToday();switchView('todayView')};
+
+$('#touristSegment').querySelectorAll('button').forEach(b=>b.onclick=()=>{$('#touristSegment').querySelectorAll('button').forEach(x=>x.classList.remove('active'));b.classList.add('active');localStorage.setItem('touristLevel',b.dataset.level)});
+const tl=localStorage.getItem('touristLevel'); if(tl){$('#touristSegment').querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.level===tl))}
+
+function loadExpenses(){return JSON.parse(localStorage.getItem('expensesV1')||'[]')}
+function renderExpenses(){
+ const a=loadExpenses(), olga=a.filter(x=>x.payer==='Olga').reduce((s,x)=>s+x.amount,0), hila=a.filter(x=>x.payer==='Hila').reduce((s,x)=>s+x.amount,0), diff=(olga-hila)/2;
+ $('#balanceBox').innerHTML=`<div class="note">Total paid — Olga: €${olga.toFixed(2)} · Hila: €${hila.toFixed(2)}</div><div class="balance">${Math.abs(diff)<.005?'Even':diff>0?`Hila owes Olga €${diff.toFixed(2)}`:`Olga owes Hila €${Math.abs(diff).toFixed(2)}`}</div>`;
+ $('#expenseList').innerHTML=a.length?a.slice().reverse().map(x=>`<div class="expense"><div><strong>${esc(x.title)}</strong><br><small>Paid by ${x.payer}</small></div><strong>€${x.amount.toFixed(2)}</strong></div>`).join(''):`<div class="empty">No expenses yet.</div>`;
+}
+$('#addExpense').onclick=()=>{const amount=parseFloat($('#expenseAmount').value),title=$('#expenseTitle').value.trim(),payer=$('#expensePayer').value;if(!amount||!title)return alert('Add an amount and a title');let a=loadExpenses();a.push({amount,title,payer,ts:Date.now()});localStorage.setItem('expensesV1',JSON.stringify(a));$('#expenseAmount').value='';$('#expenseTitle').value='';renderExpenses()}
+$('#sharedNotes').value=localStorage.getItem('sharedNotesV1')||'';
+$('#saveNotes').onclick=()=>{localStorage.setItem('sharedNotesV1',$('#sharedNotes').value);alert('Saved on this device')}
+
+renderDateStrip();renderToday();renderTrip();renderExplore();renderExpenses();
 </script>
-</body></html>
+</body>
+</html>
