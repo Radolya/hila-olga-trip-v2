@@ -1,7 +1,7 @@
 {
-  "name": "hila-olga-trip-v6-0",
+  "name": "hila-olga-trip-v6-1",
   "private": true,
-  "version": "6.0.0",
+  "version": "6.1.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
