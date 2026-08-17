@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hila + Olga — Sep 18</title>
+<style>
+:root{--bg:#f4f1ea;--card:#fffdfa;--text:#202522;--muted:#6b716d;--sage:#748371;--soft:#e8ece5;--line:#e3ded5}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,sans-serif}
+.app{max-width:520px;margin:auto;padding:18px 16px 92px}.eyebrow{font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:800}
+h1{font-size:30px;line-height:1.08;margin:6px 0 8px}.sub{font-size:18px;color:var(--muted)}
+.hero,.card{background:var(--card);border-radius:24px;overflow:hidden;box-shadow:0 8px 24px rgba(30,35,30,.08);margin:14px 0}
+.hero img,.place img{width:100%;height:210px;object-fit:cover;display:block}.pad,.card{padding:18px}.hero .pad{padding:18px}
+.tabs{position:sticky;top:0;z-index:5;display:flex;gap:8px;overflow:auto;padding:10px 0;background:rgba(244,241,234,.96);backdrop-filter:blur(8px)}
+.tab{border:0;border-radius:999px;padding:12px 16px;font-size:17px;font-weight:800;background:#e9e5dc;color:var(--text);white-space:nowrap}
+.tab.active{background:var(--text);color:white}.panel{display:none}.panel.active{display:block}
+.big{font-size:27px;font-weight:850}.chip{display:inline-block;background:var(--soft);padding:8px 11px;border-radius:999px;margin:8px 5px 0 0;font-weight:750}
+.stop{display:grid;grid-template-columns:78px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}.stop:last-child{border:0}
+.time{font-size:18px;font-weight:850}.stop h3{font-size:22px;margin:0 0 4px}.stop p{font-size:17px;line-height:1.4;margin:0;color:var(--muted)}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.btn{display:block;text-align:center;padding:14px 10px;border-radius:14px;text-decoration:none;font-size:17px;font-weight:850;background:var(--text);color:white}.btn.alt{background:var(--soft);color:var(--text)}
+.moneygrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.money{border:1px solid var(--line);border-radius:18px;padding:15px}.money b{font-size:25px;display:block;margin-top:5px}
+.line{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:17px}.line:last-child{border:0}
+.note{background:#f4f2ed;border-radius:14px;padding:13px;font-size:16px;line-height:1.45;margin-top:12px}.place{padding:0}.place .inside{padding:18px}.tag{display:inline-block;background:var(--soft);border-radius:999px;padding:7px 10px;font-size:14px;font-weight:800;margin-right:6px}
+nav{position:fixed;left:0;right:0;bottom:0;background:rgba(255,253,250,.97);border-top:1px solid var(--line);padding:10px}.nav{max-width:520px;margin:auto;display:grid;grid-template-columns:repeat(5,1fr);text-align:center;font-size:13px;color:var(--muted)}.nav strong{display:block;font-size:20px}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="eyebrow">Hila + Olga · Friday, Sep 18</div>
+  <h1>Valencia → Chelva → Chulilla → Royuela</h1>
+  <div class="sub">Road-trip day · Spain</div>
+
+  <section class="hero">
+    <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Vista_de_Albarrac%C3%ADn.jpg" alt="Albarracín">
+    <div class="pad">
+      <div class="big">Flexible in the middle</div>
+      <div class="sub">Fixed tonight: Hostal Posada Royuela · €60.68</div>
+      <span class="chip">🚗 Seat Arona</span><span class="chip">🥾 Hike</span><span class="chip">💎 Hidden-ish</span>
+    </div>
+  </section>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="route">Route</button>
+    <button class="tab" data-tab="budget">Budget</button>
+    <button class="tab" data-tab="stay">Stay</button>
+    <button class="tab" data-tab="ideas">Ideas</button>
+  </div>
+
+  <section class="panel active" id="route">
+    <div class="card">
+      <div class="big">~222 km total</div>
+      <div class="sub">Approx. 4h driving before local detours</div>
+      <div class="note">Planning estimate only. Open Google Maps before departure for live traffic and the final road choice.</div>
+      <div class="btns">
+        <a class="btn" target="_blank" href="https://www.google.com/maps/dir/Valencia,+Spain/Chelva,+Spain/Chulilla,+Spain/Royuela,+Spain">Open route</a>
+        <a class="btn alt" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Hostal+Posada+Royuela">Stay map</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="stop"><div class="time">Morning</div><div><h3>Pick up Seat Arona</h3><p>Valencia. Stock up on water, fruit and easy road food.</p></div></div>
+      <div class="stop"><div class="time">+ ~50m</div><div><h3>Chelva</h3><p>Old quarters + a short walk. Valencia–Chelva is about 69–70 km by road.</p></div></div>
+      <div class="stop"><div class="time">+ ~21m</div><div><h3>Chulilla</h3><p>Hanging bridges / canyon. Use a shorter version today, not the full 16 km loop.</p></div></div>
+      <div class="stop"><div class="time">Evening</div><div><h3>Royuela</h3><p>Check in. Albarracín can be an optional evening walk if you still have energy.</p></div></div>
+    </div>
+  </section>
+
+  <section class="panel" id="budget">
+    <div class="card">
+      <h2>Today's estimate · for two</h2>
+      <div class="moneygrid">
+        <div class="money"><span>Basic</span><b>€95–125</b></div>
+        <div class="money"><span>Comfortable</span><b>€145–190</b></div>
+      </div>
+      <div class="note">Hotel included. Car rental is separate because insurance and other rental fees are still TBD.</div>
+    </div>
+    <div class="card">
+      <div class="line"><span>🏨 Hotel</span><b>€60.68</b></div>
+      <div class="line"><span>⛽ Fuel</span><b>€18–26</b></div>
+      <div class="line"><span>🥪 Food / groceries</span><b>€20–45</b></div>
+      <div class="line"><span>☕ Coffee / snacks</span><b>€6–14</b></div>
+      <div class="line"><span>🎟 Activities / parking</span><b>€0–15</b></div>
+    </div>
+    <div class="card">
+      <h2>Car rental · whole trip</h2>
+      <div class="line"><span>Base rental</span><b>€310</b></div>
+      <div class="line"><span>2nd driver (€15 × 6)</span><b>€90</b></div>
+      <div class="line"><span>Insurance</span><b>TBD</b></div>
+      <div class="line"><span>Known minimum</span><b>€400+</b></div>
+    </div>
+  </section>
+
+  <section class="panel" id="stay">
+    <div class="card">
+      <h2>Hostal Posada Royuela</h2>
+      <div class="line"><span>Dates</span><b>18 → 19 Sep</b></div>
+      <div class="line"><span>Confirmed total</span><b>€60.68</b></div>
+      <div class="line"><span>Status</span><b>Confirmed</b></div>
+      <div class="btns">
+        <a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Hostal+Posada+Royuela">Maps</a>
+        <a class="btn alt" target="_blank" href="https://www.booking.com/searchresults.html?ss=Hostal+Posada+Royuela">Booking</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="ideas">
+    <article class="card place">
+      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Chelva%2C_Valencia%2C_Spain_-_panoramio_%282%29.jpg" alt="Chelva">
+      <div class="inside"><span class="tag">LOCAL VIBE</span><h2>Chelva old quarters</h2><p class="sub">Historic neighbourhoods, viewpoints and a flexible short stop.</p><div class="btns"><a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Chelva+Spain">Map</a><a class="btn alt" target="_blank" href="https://commons.wikimedia.org/wiki/Chelva">Photos</a></div></div>
+    </article>
+    <article class="card place">
+      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Entornos_Chulilla.JPG" alt="Chulilla">
+      <div class="inside"><span class="tag">HIKE</span><span class="tag">CANYON</span><h2>Chulilla hanging bridges</h2><p class="sub">Classic route around 10 km; the long circular route is about 16 km / 4–6 h. Choose a shorter out-and-back today.</p><div class="btns"><a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Puentes+Colgantes+Chulilla">Map</a><a class="btn alt" target="_blank" href="https://www.chulilla.net/en/route-hanging-bridges-chulilla/">Trail info</a></div></div>
+    </article>
+    <article class="card place">
+      <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Calle_de_Albarracin.jpg" alt="Albarracín">
+      <div class="inside"><span class="tag">EVENING</span><h2>Albarracín after check-in</h2><p class="sub">Optional evening walk and dinner if the day still feels light.</p><div class="btns"><a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Albarracin+Spain">Map</a><a class="btn alt" target="_blank" href="https://commons.wikimedia.org/wiki/Category:Albarrac%C3%ADn">Photos</a></div></div>
+    </article>
+  </section>
+</div>
+
+<nav><div class="nav"><div><strong>☀️</strong>Today</div><div><strong>🧳</strong>Trip</div><div><strong>🧭</strong>Explore</div><div><strong>📍</strong>Map</div><div><strong>•••</strong>More</div></div></nav>
+<script>
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active')})
+</script>
+</body></html>
