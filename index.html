@@ -324,7 +324,7 @@ const exploreSeed = [
 const tripStart='2026-09-09', tripEnd='2026-09-26';
 const isoToday=()=>{const n=new Date(); return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}`};
 const realToday=isoToday();
-let currentDate=(realToday>=tripStart && realToday<=tripEnd)?realToday:'2026-09-18';
+let currentDate = realToday < tripStart ? tripStart : (realToday > tripEnd ? tripEnd : realToday);
 let subtab='route';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
@@ -450,7 +450,7 @@ function switchView(id){
  $$('.view').forEach(v=>v.classList.toggle('active',v.id===id)); $$('.navbtn').forEach(n=>n.classList.toggle('active',n.dataset.view===id)); window.scrollTo({top:0,behavior:'smooth'});
 }
 $$('.navbtn').forEach(b=>b.onclick=()=>switchView(b.dataset.view));
-$('#jumpToday').onclick=()=>{currentDate=(realToday>=tripStart&&realToday<=tripEnd)?realToday:'2026-09-18';subtab='route';renderDateStrip();renderToday();switchView('todayView')};
+$('#jumpToday').onclick=()=>{currentDate = realToday < tripStart ? tripStart : (realToday > tripEnd ? tripEnd : realToday);subtab='route';renderDateStrip();renderToday();switchView('todayView')};
 
 $('#touristSegment').querySelectorAll('button').forEach(b=>b.onclick=()=>{$('#touristSegment').querySelectorAll('button').forEach(x=>x.classList.remove('active'));b.classList.add('active');localStorage.setItem('touristLevel',b.dataset.level)});
 const tl=localStorage.getItem('touristLevel'); if(tl){$('#touristSegment').querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.level===tl))}
