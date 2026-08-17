@@ -204,6 +204,10 @@ textarea{min-height:105px;resize:vertical}
         <div id="packingList" style="margin-top:10px"></div>
       </div>
       <div class="card">
+        <h2>Photo credits</h2>
+        <div class="sub">Destination photos are bundled locally so they display reliably. Lisbon, Ericeira, Valencia and Tamariu imagery is sourced from Wikimedia Commons under the respective Creative Commons licenses; Rome destination image is from Lyon Aéroports travel content.</div>
+      </div>
+      <div class="card">
         <h2>Quick access</h2>
         <div class="row"><span>🚗 Seat Arona rental</span><strong>18–24 Sep</strong></div>
         <div class="row"><span>Base rental</span><strong>€310</strong></div>
@@ -227,21 +231,21 @@ textarea{min-height:105px;resize:vertical}
 
 <script>
 const days = [
- {date:'2026-09-09',dow:'Wed',city:'Rome',title:'Tel Aviv → Rome',flight:'TLV → FCO · 19:40–22:30',stay:'Appartamento – San Lorenzo',price:'€129',type:'flight',image:'rome-centro.webp',badges:['✈️ Flight','🌙 Late arrival','🎨 San Lorenzo']},
- {date:'2026-09-10',dow:'Thu',city:'Rome → Lisbon',title:'Rome half-day → Lisbon',flight:'FCO → LIS · 18:45–21:00',stay:'The Enchantment of Lisbon (Alfama) 2',price:'€116',type:'flight',image:'rome-san-lorenzo.jpg',badges:['🏛 Half-day Rome','✈️ 18:45 flight','🏠 Alfama tonight']},
- {date:'2026-09-11',dow:'Fri',city:'Lisbon',title:'Lisbon',stay:'The Enchantment of Lisbon (Alfama) 2',price:'€116',image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Praca_do_Comercio_Panorama.jpg',badges:['🎨 Art','🍜 Food','💃 Dance']},
- {date:'2026-09-12',dow:'Sat',city:'Lisbon',title:'Lisbon',stay:'The Enchantment of Lisbon (Alfama) 2',price:'€116',image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Praca_do_Comercio_Panorama.jpg',badges:['🌊 Coast','🛍 Markets','🌙 Nightlife']},
- {date:'2026-09-13',dow:'Sun',city:'Ericeira',title:'Lisbon → Ericeira',stay:'Ericeira Waves Apartment',price:'€121',image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Ericeira_cliff.JPG',badges:['🌊 Ocean','🏠 Apartment']},
- {date:'2026-09-14',dow:'Mon',city:'Ericeira',title:'Ericeira · Work day',stay:'Ericeira Waves Apartment',price:'€121',work:'07:00–15:00',image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Ericeira_cliff.JPG',badges:['💻 Work 07:00–15:00','🌅 Free after 15:00']},
- {date:'2026-09-15',dow:'Tue',city:'Ericeira',title:'Ericeira',stay:'Ericeira Waves Apartment',price:'€121',image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Ericeira_cliff.JPG',badges:['🧘 Yoga','🌊 Beach','🌅 Sunset']},
- {date:'2026-09-16',dow:'Wed',city:'Valencia',title:'Ericeira → Valencia',flight:'LIS → VAL · 20:45–23:20',stay:'Mirador5 Mercado Central',price:'€98',type:'flight',image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Mercat_Central,_Valencia_06.jpg',badges:['✈️ Flight','🌙 Late arrival']},
- {date:'2026-09-17',dow:'Thu',city:'Valencia',title:'Valencia · Work day',stay:'Mirador5 Mercado Central',price:'€98',work:'07:00–15:00',image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Mercat_Central,_Valencia_06.jpg',badges:['💻 Work 07:00–15:00','🎨 Free afternoon']},
+ {date:'2026-09-09',dow:'Wed',city:'Rome',title:'Tel Aviv → Rome',flight:'TLV → FCO · 19:40–22:30',stay:'Appartamento – San Lorenzo',price:'€129',type:'flight',image:'rome-destination.jpg',badges:['✈️ Flight','🌙 Late arrival','🎨 San Lorenzo']},
+ {date:'2026-09-10',dow:'Thu',city:'Rome → Lisbon',title:'Rome half-day → Lisbon',flight:'FCO → LIS · 18:45–21:00',stay:'The Enchantment of Lisbon (Alfama) 2',price:'€116',type:'flight',image:'rome-destination.jpg',badges:['🏛 Half-day Rome','✈️ 18:45 flight','🏠 Alfama tonight']},
+ {date:'2026-09-11',dow:'Fri',city:'Lisbon',title:'Lisbon',stay:'The Enchantment of Lisbon (Alfama) 2',price:'€116',image:'lisbon-destination.jpg',badges:['🎨 Art','🍜 Food','💃 Dance']},
+ {date:'2026-09-12',dow:'Sat',city:'Lisbon',title:'Lisbon',stay:'The Enchantment of Lisbon (Alfama) 2',price:'€116',image:'lisbon-destination.jpg',badges:['🌊 Coast','🛍 Markets','🌙 Nightlife']},
+ {date:'2026-09-13',dow:'Sun',city:'Ericeira',title:'Lisbon → Ericeira',stay:'Ericeira Waves Apartment',price:'€121',image:'ericeira-destination.jpg',badges:['🌊 Ocean','🏠 Apartment']},
+ {date:'2026-09-14',dow:'Mon',city:'Ericeira',title:'Ericeira · Work day',stay:'Ericeira Waves Apartment',price:'€121',work:'07:00–15:00',image:'ericeira-destination.jpg',badges:['💻 Work 07:00–15:00','🌅 Free after 15:00']},
+ {date:'2026-09-15',dow:'Tue',city:'Ericeira',title:'Ericeira',stay:'Ericeira Waves Apartment',price:'€121',image:'ericeira-destination.jpg',badges:['🧘 Yoga','🌊 Beach','🌅 Sunset']},
+ {date:'2026-09-16',dow:'Wed',city:'Valencia',title:'Ericeira → Valencia',flight:'LIS → VAL · 20:45–23:20',stay:'Mirador5 Mercado Central',price:'€98',type:'flight',image:'valencia-destination.jpg',badges:['✈️ Flight','🌙 Late arrival']},
+ {date:'2026-09-17',dow:'Thu',city:'Valencia',title:'Valencia · Work day',stay:'Mirador5 Mercado Central',price:'€98',work:'07:00–15:00',image:'valencia-destination.jpg',badges:['💻 Work 07:00–15:00','🎨 Free afternoon']},
  {date:'2026-09-18',dow:'Fri',city:'Royuela / Albarracín',title:'Valencia → Chelva → Chulilla → Royuela',stay:'Hostal Posada Royuela',price:'€60.68',car:true,image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Albarrac%C3%ADn,_Teruel,_Espa%C3%B1a,_2014-01-10,_DD_022-025_PAN.JPG',badges:['🚗 Road trip','🥾 Hike','💎 Hidden-ish']},
  {date:'2026-09-19',dow:'Sat',city:'Arnés / Beceite',title:'Albarracín → Beceite area',stay:'Villa Dynamic Els Ports Resort',price:'€66.73',car:true,image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Beceite,_Teruel_(Spain).JPG',badges:['🚗 Mountains','🌊 Embalse de Pena','🥾 El Parrizal']},
  {date:'2026-09-20',dow:'Sun',city:'Cornudella de Montsant',title:'Beceite → Montsant / Priorat',stay:'Cal Triquell',price:'€90.63',car:true,image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Siurana_de_Tarragona,_08.jpg',badges:['🍷 Priorat','🥾 Montsant','🏘 Siurana area']},
- {date:'2026-09-21',dow:'Mon',city:'Tamariu',title:'Siurana → Costa Brava',stay:'Rental unit · Carrer de la Riera 38, Apt 25',price:'€122',car:true,checkin:'from 16:00',image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Tamariu_Beach.jpg',badges:['🚗 Road trip','🌊 Costa Brava','🏠 Check-in 16:00']},
- {date:'2026-09-22',dow:'Tue',city:'Tamariu',title:'Costa Brava',stay:'Rental unit · Tamariu',price:'€122',car:true,image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Cala_d%27Aigua_Xelida,_Tamariu,_Palafrugell,_Costa_Brava,_Catalunya.jpg',badges:['🌊 Wild beaches','💎 Hidden gems','🌅 Sunset']},
- {date:'2026-09-23',dow:'Wed',city:'Tamariu',title:'Costa Brava · Work day',stay:'Rental unit · Tamariu',price:'€122',work:'07:00–15:00',car:true,image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Tamariu_2022-10-27_12.55.19.jpg',badges:['💻 Work 07:00–15:00','🌊 Free afternoon']},
+ {date:'2026-09-21',dow:'Mon',city:'Tamariu',title:'Siurana → Costa Brava',stay:'Rental unit · Carrer de la Riera 38, Apt 25',price:'€122',car:true,checkin:'from 16:00',image:'tamariu-destination.jpg',badges:['🚗 Road trip','🌊 Costa Brava','🏠 Check-in 16:00']},
+ {date:'2026-09-22',dow:'Tue',city:'Tamariu',title:'Costa Brava',stay:'Rental unit · Tamariu',price:'€122',car:true,image:'tamariu-destination.jpg',badges:['🌊 Wild beaches','💎 Hidden gems','🌅 Sunset']},
+ {date:'2026-09-23',dow:'Wed',city:'Tamariu',title:'Costa Brava · Work day',stay:'Rental unit · Tamariu',price:'€122',work:'07:00–15:00',car:true,image:'tamariu-destination.jpg',badges:['💻 Work 07:00–15:00','🌊 Free afternoon']},
  {date:'2026-09-24',dow:'Thu',city:'Barcelona',title:'Tamariu → Barcelona',stay:'Bright Double Room · Eixample',price:'€101',checkout:'Tamariu before 10:00',checkin:'Barcelona 14:00–23:00',image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Vista_de_Barcelona.jpg',badges:['🚗 Return car','🏙 Barcelona','🌙 Nightlife']},
  {date:'2026-09-25',dow:'Fri',city:'Barcelona',title:'Barcelona',stay:'Bright Double Room · Eixample',price:'€101',image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Sagrada_Familia,_Barcelona_(P1170674).jpg',badges:['🎨 Art','🛍 Vintage','💃 Flamenco / dance']},
  {date:'2026-09-26',dow:'Sat',city:'Tel Aviv',title:'Barcelona → Tel Aviv',flight:'BCN → TLV · 18:05–02:45',image:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Tel_Aviv_Skyline_at_the_beach_(2008)_01.jpg',badges:['✈️ Flight home','🧳 Last day']}
@@ -281,11 +285,73 @@ const stayPhotos = {
  'Bright Double Room · Eixample':'https://a0.muscache.com/im/pictures/hosting/Hosting-1710843837683658715/original/42894b89-5145-432c-966e-7d2448c8c79a.jpeg?im_w=720'
 };
 
+
+
+const airportPlan={
+ '2026-09-09':{leave:'Plan airport arrival ~3 hours before 19:40',text:'TLV departure day. Exact leave-home time should use live traffic from your starting point to Ben Gurion.'},
+ '2026-09-10':{leave:'Leave San Lorenzo around 15:00–15:15',text:'For the 18:45 FCO flight: allow ~15–25 min to Termini + 32 min Leonardo Express + walking/waiting. This gives a comfortable airport buffer.'},
+ '2026-09-16':{leave:'Leave Lisbon/Alfama around 17:45',text:'For the 20:45 LIS flight: aim to be at the airport around 18:15–18:30. Re-check live traffic/transit that afternoon.'},
+ '2026-09-26':{leave:'Leave Eixample around 14:00',text:'For the 18:05 BCN → TLV flight: aim for Barcelona airport around 15:00, leaving extra time for Israel-bound security/check-in.'}
+};
+
+const weatherPlaces = {
+ 'Rome':{lat:41.9028,lon:12.4964,sep:'Usually warm in September; keep a light layer for late evening.'},
+ 'Rome → Lisbon':{lat:41.9028,lon:12.4964,sep:'Rome half-day: usually warm; airport/air-conditioning layer is useful.'},
+ 'Lisbon':{lat:38.7223,lon:-9.1393,sep:'Usually warm and dry-ish, but Atlantic wind can make evenings cooler.'},
+ 'Ericeira':{lat:38.9620,lon:-9.4170,sep:'Atlantic coast: wind is common; pack a light jacket even on sunny days.'},
+ 'Valencia':{lat:39.4699,lon:-0.3763,sep:'Usually warm; midday can still feel hot.'},
+ 'Royuela / Albarracín':{lat:40.378,lon:-1.513,sep:'Mountain area: bigger day/night temperature difference; bring a layer.'},
+ 'Arnés / Beceite':{lat:40.831,lon:0.181,sep:'Warm days are possible; hiking shade and water matter.'},
+ 'Cornudella de Montsant':{lat:41.265,lon:0.906,sep:'Warm, dry hiking weather is common, but exposed trails can feel hot.'},
+ 'Tamariu':{lat:41.917,lon:3.207,sep:'Mediterranean coast: warm, with possible wind or short showers.'},
+ 'Barcelona':{lat:41.3874,lon:2.1686,sep:'Usually warm and humid; evenings are comfortable but rain is possible.'},
+ 'Tel Aviv':{lat:32.0853,lon:34.7818,sep:'Usually hot and humid in September.'}
+};
+function weatherText(code){
+ if(code===0)return 'Clear';
+ if([1,2].includes(code))return 'Mostly clear';
+ if(code===3)return 'Cloudy';
+ if([45,48].includes(code))return 'Fog';
+ if(code>=51&&code<=67)return 'Rain';
+ if(code>=80&&code<=82)return 'Showers';
+ if(code>=95)return 'Thunderstorms';
+ return 'Mixed';
+}
+async function loadWeather(d){
+ const box=document.getElementById('weatherLive');
+ if(!box) return;
+ const w=weatherPlaces[d.city]; if(!w){box.innerHTML='<div class="sub">Weather location not configured yet.</div>';return}
+ try{
+  const u=`https://api.open-meteo.com/v1/forecast?latitude=${w.lat}&longitude=${w.lon}&current=temperature_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max,sunrise,sunset&timezone=auto&forecast_days=16`;
+  const r=await fetch(u); const data=await r.json();
+  const c=data.current||{};
+  const today=new Date(); const trip=new Date(d.date+'T12:00:00'); const diff=Math.round((trip-today)/86400000);
+  let headline=`Now in ${d.city}: ${Math.round(c.temperature_2m)}°C · ${weatherText(c.weather_code)} · wind ${Math.round(c.wind_speed_10m)} km/h`;
+  let warning='';
+  if(c.wind_speed_10m>=25) warning='💨 Windy now — take a light jacket.';
+  else if(c.precipitation>0 || (c.weather_code>=51&&c.weather_code<=82)) warning='🌧 Rain around — take a light rain layer.';
+  else if(c.temperature_2m>=30) warning='☀️ Hot now — water + sun protection.';
+  else warning='✓ No special weather warning right now.';
+  let future='';
+  if(diff>=0 && diff<16){
+    const i=data.daily.time.indexOf(d.date);
+    if(i>=0){
+      future=`<div class="note"><strong>Trip-date forecast:</strong> ${Math.round(data.daily.temperature_2m_min[i])}–${Math.round(data.daily.temperature_2m_max[i])}°C · rain ${data.daily.precipitation_probability_max[i]??0}% · max wind ${Math.round(data.daily.wind_speed_10m_max[i])} km/h · sunset ${data.daily.sunset[i].slice(11,16)}.</div>`;
+    }
+  } else {
+    future=`<div class="note"><strong>September planning:</strong> ${w.sep}<br>Exact Sep ${new Date(d.date+'T12:00:00').getDate()} forecast is not scientifically available yet. The app will switch automatically to the real forecast when the date enters the ~16-day forecast window.</div>`;
+  }
+  box.innerHTML=`<div class="big">${headline}</div><div class="sub" style="margin-top:7px">${warning}</div>${future}`;
+ }catch(e){
+  box.innerHTML=`<div class="sub">Live weather could not load. ${w.sep}</div>`;
+ }
+}
+
 const specialIdeas = {
  '2026-09-10':[
-  {name:'San Lorenzo street-art walk',desc:'Start close to your Rome stay: murals, student/bohemian streets and a much less touristy feel than the historic-center checklist.',tags:['🎨 STREET ART','✓ NEAR STAY'],img:'rome-san-lorenzo.jpg',map:'https://www.google.com/maps/search/?api=1&query=San+Lorenzo+Rome+street+art'},
-  {name:'Pantheon + historic-center wander',desc:'If you want one classic, make it compact: Pantheon, surrounding lanes and coffee. Official 2026 full-price Pantheon entry is €7.',tags:['🏛 CLASSIC','€7 ENTRY'],img:'rome-centro.webp',map:'https://www.google.com/maps/search/?api=1&query=Pantheon+Rome'},
-  {name:'Colosseum — outside or timed entry',desc:'Iconic but optional. Official basic ticket is €18; timed Colosseum entry must be reserved. Do this only if you want one major classic before the flight.',tags:['🏛 OPTIONAL CLASSIC','BOOK AHEAD'],img:'rome-centro.webp',map:'https://www.google.com/maps/search/?api=1&query=Colosseum+Rome'},
+  {name:'San Lorenzo street-art walk',desc:'Start close to your Rome stay: murals, student/bohemian streets and a much less touristy feel than the historic-center checklist.',tags:['🎨 STREET ART','✓ NEAR STAY'],img:'rome-destination.jpg',map:'https://www.google.com/maps/search/?api=1&query=San+Lorenzo+Rome+street+art'},
+  {name:'Pantheon + historic-center wander',desc:'If you want one classic, make it compact: Pantheon, surrounding lanes and coffee. Official 2026 full-price Pantheon entry is €7.',tags:['🏛 CLASSIC','€7 ENTRY'],img:'rome-destination.jpg',map:'https://www.google.com/maps/search/?api=1&query=Pantheon+Rome'},
+  {name:'Colosseum — outside or timed entry',desc:'Iconic but optional. Official basic ticket is €18; timed Colosseum entry must be reserved. Do this only if you want one major classic before the flight.',tags:['🏛 OPTIONAL CLASSIC','BOOK AHEAD'],img:'rome-destination.jpg',map:'https://www.google.com/maps/search/?api=1&query=Colosseum+Rome'},
   {name:'Mercato Centrale quick lunch',desc:'Practical before heading toward the airport: lots of food choices near Termini, useful when you do not want a long sit-down lunch.',tags:['🍜 QUICK FOOD','🚆 PRACTICAL'],img:'',map:'https://www.google.com/maps/search/?api=1&query=Mercato+Centrale+Roma'},
   {name:'San Lorenzo local lunch',desc:'Stay in the neighborhood for a relaxed meal instead of crossing Rome twice. The app will keep a few food suggestions rather than forcing a rating-based choice.',tags:['🍝 LOCAL','✓ NEAR STAY'],img:'',map:'https://www.google.com/maps/search/?api=1&query=San+Lorenzo+Rome+restaurants'},
   {name:'Coffee + slow morning',desc:'If you are tired after the late arrival, keep Rome simple: coffee, San Lorenzo walk, one central landmark, lunch, then airport.',tags:['☕ EASY','PLAN B'],img:'',map:'https://www.google.com/maps/search/?api=1&query=coffee+San+Lorenzo+Rome'}
@@ -365,11 +431,17 @@ function renderToday(){
  const d=days.find(x=>x.date===currentDate);
  const image=d.image||'';
  const badges=(d.badges||[]).map(x=>`<span class="badge ${x.includes('Work')?'work':''}">${esc(x)}</span>`).join('');
- const hero=`<section class="hero ${image?'hasimg':''}">${image?`<img src="${image}" alt="${esc(d.city)}">`:''}<div class="hero-content"><div class="kicker">${d.dow} · ${dateLabel(d).day} ${dateLabel(d).mon}</div><h1>${esc(d.title)}</h1><p>${esc(d.city)}${d.stay?` · Tonight: ${esc(d.stay)}`:''}</p><div class="badges">${badges}</div></div></section>`;
- const weather=`<div class="card"><h2>Weather</h2><div class="big">Live forecast</div><div class="sub">Automatic live weather is prepared as a feature but needs a weather data source/API before it can display real conditions. Until then, the app will not invent a forecast.</div><div class="note">When connected: temperature · rain · wind · sunset + practical warnings such as “Windy — take a light jacket.”</div></div>`;
+ const hero=`<section class="hero ${image?'hasimg':''}">${image?`<img src="${image}" alt="${esc(d.city)}" onerror="this.style.display='none';this.parentElement.classList.remove('hasimg')">`:''}<div class="hero-content"><div class="kicker">${d.dow} · ${dateLabel(d).day} ${dateLabel(d).mon}</div><h1>${esc(d.title)}</h1><p>${esc(d.city)}${d.stay?` · Tonight: ${esc(d.stay)}`:''}</p><div class="badges">${badges}</div></div></section>`;
+ const weather=`<div class="card"><h2>Weather</h2><div id="weatherLive"><div class="sub">Loading live weather…</div></div></div>`;
  const tabs=`<div class="tabs"><button class="tab ${subtab==='route'?'active':''}" data-sub="route">Route</button><button class="tab ${subtab==='budget'?'active':''}" data-sub="budget">Budget</button><button class="tab ${subtab==='stay'?'active':''}" data-sub="stay">Stay</button><button class="tab ${subtab==='ideas'?'active':''}" data-sub="ideas">Ideas</button></div>`;
- const nowCard=`<div class="card"><h2>What should we do now?</h2><div class="sub">Uses the current time as a guardrail: no long hike late in the day. Weather-aware recommendations will switch on when the live weather service is connected.</div><div class="actions"><button class="action" onclick="smartNow()">Give us 3 options</button><button class="action soft" onclick="setSub('ideas')">Browse ideas</button></div></div>`;
- $('#todayContent').innerHTML=hero+weather+tabs+nowCard+`<div id="subcontent"></div>`;
+ const suggestions=nowSuggestions(d);
+ const nowCard=`<div class="card"><h2>${d.date===realToday?'What should we do now?':'If we have free time'}</h2>
+ ${suggestions.map((x,i)=>`<div class="row"><span>${x.icon} <strong>${x.title}</strong><br><span class="sub">${x.text}</span></span>${x.map?`<a target="_blank" href="${x.map}">Map ↗</a>`:''}</div>`).join('')}
+ <div class="actions"><button class="action soft" onclick="setSub('ideas')">More ideas</button><button class="action blue" onclick="goExplore()">Explore region</button></div></div>`;
+ const ap=airportPlan[d.date];
+ const airportCard=ap?`<div class="card"><h2>✈️ Airport timing</h2><div class="big">${ap.leave}</div><div class="sub" style="margin-top:7px">${ap.text}</div></div>`:'';
+ $('#todayContent').innerHTML=hero+weather+airportCard+tabs+nowCard+`<div id="subcontent"></div>`;
+ loadWeather(d);
  $$('.tab').forEach(b=>b.onclick=()=>{subtab=b.dataset.sub;renderToday();});
  renderSub(d);
 }
@@ -415,13 +487,30 @@ function renderSub(d){
    bindSave();
  }
 }
-window.smartNow=()=>{
- const d=days.find(x=>x.date===currentDate), h=new Date().getHours();
- let opts=h<11?['☕ Coffee + easy start','🥾 Short nature option','🎨 Local / art stop']:
-          h<16?['🌊 Nature / beach','🍜 Lunch + wander','💎 Hidden gem on route']:
-          h<19?['🌅 Sunset-oriented stop','🍷 Early dinner / wine','💎 Short hidden gem']:
-                 ['🍷 Dinner','🎶 Date-specific event','🌙 Easy local walk'];
- alert(`${d.city}\n\n${opts.join('\n')}\n\nLong hikes are suppressed late in the day.`);
+function nowSuggestions(d){
+ const h=new Date().getHours();
+ if(d.date==='2026-09-10') return [
+  {icon:'🎨',title:'San Lorenzo street-art walk',text:'Easy start close to the apartment; keep it to ~60–90 min.',map:'https://www.google.com/maps/search/?api=1&query=San+Lorenzo+Rome+street+art'},
+  {icon:'🏛',title:'Pantheon + historic center',text:'One compact Rome classic; allow ~2 hours including getting there and coffee.',map:'https://www.google.com/maps/search/?api=1&query=Pantheon+Rome'},
+  {icon:'🍜',title:'Mercato Centrale lunch',text:'Practical near Termini before the airport; lots of quick food choices.',map:'https://www.google.com/maps/search/?api=1&query=Mercato+Centrale+Roma'}
+ ];
+ const ideas=getIdeas(d);
+ if(ideas.length) return ideas.slice(0,3).map((p,i)=>({icon:['💎','🌊','🥾'][i%3],title:p.name,text:p.desc,map:p.map}));
+ if(d.work) return [
+  {icon:'☕',title:'Coffee after work',text:`Work is fixed until ${d.work.split('–')[1]||'15:00'}; start easy nearby.`},
+  {icon:'🌅',title:'Sunset option',text:'Keep the evening flexible and weather-aware.'},
+  {icon:'🍜',title:'Dinner + local walk',text:'Low-effort option after a work day.'}
+ ];
+ if(d.flight) return [
+  {icon:'☕',title:'Easy local coffee',text:'Stay close enough that luggage and airport timing remain comfortable.'},
+  {icon:'🎨',title:'One short local stop',text:'Choose one thing, not a full sightseeing list.'},
+  {icon:'🍜',title:'Eat before the airport',text:'Simple meal so the flight day stays calm.'}
+ ];
+ return [
+  {icon:'💎',title:'Hidden gem nearby',text:'Short, flexible and easy to skip if the day runs late.'},
+  {icon:'🍜',title:'Food / coffee',text:'Choose something local or easy rather than planning every meal.'},
+  {icon:'🌅',title:'Sunset / evening walk',text:'A low-effort option that fits most days.'}
+ ];
 }
 window.setSub=s=>{subtab=s;renderToday()}
 window.goExplore=()=>switchView('exploreView');
